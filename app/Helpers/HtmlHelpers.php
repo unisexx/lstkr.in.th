@@ -53,3 +53,12 @@ if (!function_exists('deleteDuplicate')) {
             and n1.sticker_code = n2.sticker_code');
 	}
 }
+
+if(!function_exists('convert_line_coin_2_money'))
+{
+	function convert_line_coin_2_money($coin)
+	{
+		$bath = array('250'=>'150','200'=>'120','150'=>'90','100'=>'60','50'=>'30');
+		return $bath[$coin];
+	}
+}

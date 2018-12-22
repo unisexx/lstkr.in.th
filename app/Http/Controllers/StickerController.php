@@ -20,29 +20,45 @@ class StickerController extends Controller
 {
 	public function getIndex()
 	{
+
+	}
+
+	public function getOfficial()
+	{
 		// SEO
 		SEO::setTitle('สติ๊กเกอร์ไลน์ยอดนิยม');
 		SEO::setDescription('รวมสติ๊กเกอร์ไลน์ขายดี แนะนำ ฮิตๆ ยอดนิยม');
 
 		$data['sticker'] = new Sticker;
-		$data['sticker'] = $data['sticker']->orderBy('updated_at', 'desc')->paginate(30);
-		return view('sticker.index', $data);
+		$data['sticker'] = $data['sticker']
+							->where('category','<>','creator')
+							->where('status','approve')
+							->orderBy('id', 'desc')
+							->simplePaginate(30);
+		return view('sticker.official', $data);
 	}
 
-	public function getView($param = null)
+	public function getCreator()
 	{
-		$data['rs'] = Sticker::where('slug', $param)->firstOrFail();
+		// SEO
+		SEO::setTitle('สติ๊กเกอร์ไลน์ยอดนิยม');
+		SEO::setDescription('รวมสติ๊กเกอร์ไลน์ขายดี แนะนำ ฮิตๆ ยอดนิยม');
 
-		// สติ๊กเกอร์ชุดอื่นๆของครีเอเทอร์
-		$data['other'] = Sticker::where('user_id', $data['rs']->user_id)->where('id', '!=', $data['rs']->id)->inRandomOrder()->take(12)->get();
+		$data['sticker'] = new Sticker;
+		$data['sticker'] = $data['sticker']
+							->where('category','creator')
+							->where('status','approve')
+							->orderBy('id', 'desc')
+							->simplePaginate(30);
+		return view('sticker.creator', $data);
+	}
 
-		// tracking
-		// $array = @array_merge(Session::get('track_sticker'), array($data['rs']->id));
-		// Session::set('track_sticker', $array);
-		// dump(array_unique(Session::get('track_sticker')));
+	public function getProduct($id = null)
+	{
+		$data['rs'] = Sticker::where('sticker_code',$id)->first();
 
 		// SEO
-		SEO::setTitle($data['rs']->name . ' - สติ๊กเกอร์ไลน์');
+		SEO::setTitle($data['rs']->title_th . ' - สติ๊กเกอร์ไลน์');
 		SEO::setDescription('สติ๊กเกอร์ไลน์' . $data['rs']->description);
 		SEO::opengraph()->setUrl(url()->current());
 		SEO::addImages('http://sdl-stickershop.line.naver.jp/products/0/0/' . $data['rs']->version . '/' . $data['rs']->sticker_code . '/LINEStorePC/main.png');
@@ -52,6 +68,6 @@ class StickerController extends Controller
 		OpenGraph::addProperty('image:width', '240');
 		OpenGraph::addProperty('image:height', '240');
 
-		return view('sticker.view', $data);
+		return view('sticker.product', $data);
 	}
 }

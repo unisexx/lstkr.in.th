@@ -1,5 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
 <head>
     <base href="{{ url('/') }}/"  />
     <!-- Meta & Css -->
@@ -7,22 +12,17 @@
 </head>
 
 <body id="app-layout">
-    <!-- Header -->
-    @include('include.front.header')
+    <div id="fh5co-page">
+        <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
+        @include('include.front.header')
+		<div id="fh5co-main">
 
-    <div class="container">
-    	<div class="row">
-    		<!-- <div class="col-6 col-md-2 sidebar-offcanvas" id="sidebar">
-                @include('include.front.sidebar')
-        	</div> -->
-        	<div class="col-md-10 col-md-offset-1" style="">
-    			@yield('content')
-    		</div>
-        </div>
-	</div>
-	
-	<!-- Main Footer -->
-    @include('include.front.footer')
+            @yield('content')
+			
+		</div>
+    </div>
+    
+
     
     <!-- JavaScripts -->
     @include('include.front.js')

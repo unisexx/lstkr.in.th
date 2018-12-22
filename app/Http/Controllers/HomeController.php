@@ -42,9 +42,10 @@ class HomeController extends Controller
         $data['sticker'] = new Sticker;
         $data['sticker'] = $data['sticker']->orderBy('updated_at', 'desc')->take(12)->get();
 
-        $data['theme'] = new Theme;
-        $data['theme'] = $data['theme']->orderBy('updated_at', 'desc')->take(12)->get();
-        return view('home', $data);
+        // $data['theme'] = new Theme;
+        // $data['theme'] = $data['theme']->orderBy('updated_at', 'desc')->take(12)->get();
+
+        return view('home',$data);
     }
 
     public function search()
