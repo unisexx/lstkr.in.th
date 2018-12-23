@@ -6,8 +6,8 @@ return [
          * The default configurations to be used by the meta generator.
          */
         'defaults'       => [
-            'title'        => "Linepop", // set false to total remove
-            'description'  => 'รวมสติกเกอร์ไลน์แนะนำ สติกเกอร์ไลน์ฮิต ยอดนิยม', // set false to total remove
+            'title'        => "Linesticker", // set false to total remove
+            'description'  => 'ขายสติ๊กเกอร์ไลน์ ธีมไลน์ อิโมจิไลน์ ของแท้ ไม่มีหาย', // set false to total remove
             'separator'    => ' - ',
             'keywords'     => [],
             'canonical'    => false, // Set null for using Url::current(), set false to total remove
@@ -29,8 +29,8 @@ return [
          * The default configurations to be used by the opengraph generator.
          */
         'defaults' => [
-            'title'       => 'Linepop', // set false to total remove
-            'description' => 'รวมสติกเกอร์ไลน์แนะนำ สติกเกอร์ไลน์ฮิต ยอดนิยม', // set false to total remove
+            'title'       => 'Linesticker', // set false to total remove
+            'description' => 'ขายสติ๊กเกอร์ไลน์ ธีมไลน์ อิโมจิไลน์ ของแท้ ไม่มีหาย', // set false to total remove
             'url'         => false, // Set null for using Url::current(), set false to total remove
             'type'        => false,
             'site_name'   => false,

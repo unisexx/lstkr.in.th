@@ -1,6 +1,6 @@
 <aside id="fh5co-aside" role="complementary" class="border js-fullheight">
 
-    <h1 id="fh5co-logo"><a href="{{ url('home') }}"><img src="nitro_theme/images/logo.png" alt="Free HTML5 Bootstrap Website Template"></a></h1>
+    <h1 id="fh5co-logo"><a href="http://line.me/ti/p/@line2me.in.th"><img class="img-fluid" width="115" height="115" src="https://linesticker.in.th/image/qr_line2me.png" alt="ขายสติ๊กเกอร์ไลน์ ธีมไลน์ อิโมจิไลน์ ของแท้ ไม่มีหาย"></a></h1>
     <nav id="fh5co-main-menu" role="navigation">
         <ul>
             <li class="fh5co-active"><a href="home">หน้าแรก</a></li>
@@ -11,7 +11,7 @@
             <li><a href="{{ url('emoji/official') }}">อิโมจิทางการ</a></li>
             <li><a href="{{ url('emoji/creator') }}">อิโมจิครีเอเตอร์</a></li>
             <li><a href="{{ url('aboutus') }}">เกี่ยวกับเรา</a></li>
-            <li><a href="{{ url('contact') }}">ติดต่อเรา</a></li>
+            <!-- <li><a href="{{ url('contact') }}">ติดต่อเรา</a></li> -->
         </ul>
     </nav>
 
