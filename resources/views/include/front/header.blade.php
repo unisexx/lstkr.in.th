@@ -10,17 +10,24 @@
             <li><a href="{{ url('theme/creator') }}">ธีมไลน์ครีเอเตอร์</a></li>
             <li><a href="{{ url('emoji/official') }}">อิโมจิทางการ</a></li>
             <li><a href="{{ url('emoji/creator') }}">อิโมจิครีเอเตอร์</a></li>
+            <li><a href="{{ url('aboutus') }}">เกี่ยวกับเรา</a></li>
+            <li><a href="{{ url('contact') }}">ติดต่อเรา</a></li>
         </ul>
     </nav>
 
     <div class="fh5co-footer">
-        <p><small>&copy; 2018 Linesticker.in.th All Rights Reserved.</span> <span>Designed by <a href="http://freehtml5.co/"
-                        target="_blank">FreeHTML5.co</a> </span> <span>Demo Images: <a href="http://unsplash.com/" target="_blank">Unsplash</a></span></small></p>
+        <p>
+            <small>
+                <span>&copy; 2018 Linesticker.in.th All Rights Reserved.</span> 
+                <span>Designed by <a href="http://linesticker.in.th/" target="_blank">Linesticker.in.th</a> </span> 
+                <!-- <span>Demo Images: <a href="http://unsplash.com/" target="_blank">Unsplash</a></span> -->
+            </small>
+        </p>
         <ul>
-            <li><a href="#"><i class="icon-facebook"></i></a></li>
-            <li><a href="#"><i class="icon-twitter"></i></a></li>
+            <li><a href="https://www.facebook.com/line2me.in.th/" target="_blank"><i class="icon-facebook"></i></a></li>
+            <!-- <li><a href="#"><i class="icon-twitter"></i></a></li>
             <li><a href="#"><i class="icon-instagram"></i></a></li>
-            <li><a href="#"><i class="icon-linkedin"></i></a></li>
+            <li><a href="#"><i class="icon-linkedin"></i></a></li> -->
         </ul>
     </div>
 

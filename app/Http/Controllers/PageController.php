@@ -28,9 +28,9 @@ class PageController extends Controller
 	// 	return view('page.index', $data);
 	// }
 
-	public function getView($param = null)
+	public function getView($id)
 	{
-		$data['rs'] = Page::where('slug', $param)->orWhere('id', $param)->firstOrFail();
+		$data['rs'] = Page::find($id);
 		
 		// tracking
 		// $array = @array_merge(Session::get('track_sticker'), array($data['rs']->id));

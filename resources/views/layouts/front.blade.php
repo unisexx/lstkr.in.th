@@ -22,8 +22,6 @@
 		</div>
     </div>
     
-
-    
     <!-- JavaScripts -->
     @include('include.front.js')
 </body>

@@ -14,8 +14,12 @@
 <script src="nitro_theme/js/jquery.waypoints.min.js"></script>
 <!-- Counters -->
 <script src="nitro_theme/js/jquery.countTo.js"></script>
-
-
-
 <!-- MAIN JS -->
 <script src="nitro_theme/js/main.js"></script>
+
+<script>
+$('ducument').ready(function(){
+    // ใส่ class img-fluid ให้รูปในหน้า Page เพื่อทำ responsive
+    $('.pageContent img').attr('class', 'img-fluid');
+});
+</script>

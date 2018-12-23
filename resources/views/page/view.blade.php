@@ -1,12 +1,15 @@
 @extends('layouts.front') @section('content')
-<div class="row">
-	<!-- /.col -->
-	<div class="col-md-12">
-        <h2>{{ $rs->title }}</h2>
-        <div>
-            {!! $rs->description !!}
+
+<div class="fh5co-narrow-content">
+    <div class="row">
+
+        <div class="col-md-12 animate-box pageContent" data-animate-effect="fadeInLeft">
+            <h1>{{ $rs->title }}</h1>
+            {!! $rs->detail !!}
         </div>
-	</div>
-	<!-- /.col -->
+        
+    </div>
+
 </div>
+
 @endsection
