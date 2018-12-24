@@ -45,7 +45,7 @@ class HomeController extends Controller
                             ->where('category','<>','creator')
                             ->where('status','approve')
                             ->orderBy('threedays', 'desc')
-                            ->take(12)
+                            ->take(16)
                             ->get();
 
         // สติ๊กเกอร์ไลน์ทางการ
@@ -54,7 +54,7 @@ class HomeController extends Controller
                             ->where('category','creator')
                             ->where('status','approve')
                             ->orderBy('threedays', 'desc')
-                            ->take(12)
+                            ->take(16)
                             ->get();
 
         // ธีมไลน์ทางการ
@@ -63,7 +63,7 @@ class HomeController extends Controller
                             ->where('category','official')
                             ->where('status','approve')
                             ->orderBy('id', 'desc')
-                            ->take(12)
+                            ->take(16)
                             ->get();
 
         // ธีมไลน์ครีเอเตอร์
@@ -71,8 +71,8 @@ class HomeController extends Controller
         $data['theme_creator'] = $data['theme_creator']
                             ->where('category','creator')
                             ->where('status','approve')
-                            ->orderBy('threedays', 'desc')
-                            ->take(12)
+                            ->orderBy('id', 'desc')
+                            ->take(16)
                             ->get();
 
         // อิโมจิทางการ
@@ -81,7 +81,7 @@ class HomeController extends Controller
                             ->where('category','official')
                             ->where('status','approve')
                             ->orderBy('id', 'desc')
-                            ->take(12)
+                            ->take(16)
                             ->get();
 
         // อิโมจิครีเอเตอร์
@@ -89,8 +89,8 @@ class HomeController extends Controller
         $data['emoji_creator'] = $data['emoji_creator']
                             ->where('category','creator')
                             ->where('status','approve')
-                            ->orderBy('threedays', 'desc')
-                            ->take(12)
+                            ->orderBy('id', 'desc')
+                            ->take(16)
                             ->get();
 
         return view('home',$data);
@@ -98,19 +98,32 @@ class HomeController extends Controller
 
     public function search()
     {
+        // ค้นหา sticker
         $data['sticker'] = new Sticker;
         if (!empty($_GET['q'])) {
-            $data['sticker'] = $data['sticker']->where('name', 'like', '%' . $_GET['q'] . '%')->orWhere('description', 'like', '%' . $_GET['q'] . '%');
+            $data['sticker'] = $data['sticker']
+                                ->where('title_th', 'like', $_GET['q'] . '%')
+                                ->orWhere('title_en', 'like', $_GET['q'] . '%');
         }
-        $data['sticker'] = $data['sticker']->orderBy('updated_at', 'desc')->get();
+        $data['sticker'] = $data['sticker']->orderBy('updated_at', 'desc')->take(8)->get();
 
+        // ค้นหา theme
         $data['theme'] = new Theme;
         if (!empty($_GET['q'])) {
-            $data['theme'] = $data['theme']->where('name', 'like', '%' . $_GET['q'] . '%')->orWhere('description', 'like', '%' . $_GET['q'] . '%');
+            $data['theme'] = $data['theme']
+                                ->where('title', 'like', $_GET['q'] . '%');
         }
-        $data['theme'] = $data['theme']->orderBy('updated_at', 'desc')->get();
+        $data['theme'] = $data['theme']->orderBy('updated_at', 'desc')->take(8)->get();
 
-        return view('home', $data);
+        // ค้นหา emoji
+        $data['emoji'] = new Emoji;
+        if (!empty($_GET['q'])) {
+            $data['emoji'] = $data['emoji']
+                                ->where('title', 'like', $_GET['q'] . '%');
+        }
+        $data['emoji'] = $data['emoji']->orderBy('updated_at', 'desc')->take(8)->get();
+
+        return view('home.search', $data);
     }
 
     public function author($user_id)
