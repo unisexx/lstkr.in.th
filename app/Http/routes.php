@@ -18,6 +18,9 @@
 // Route::controller('sticker', 'StickerController');
 // Route::controller('theme', 'ThemeController');
 
+// phpinfo();
+// Route::get('info', 'HomeController@info');
+
 Route::auth();
 
 Route::get('/', 'HomeController@index');
@@ -60,4 +63,4 @@ Route::get('/testimg', function () {
 });
 
 // test entrust
-Route::controller('role', 'RoleController');
+// Route::controller('role', 'RoleController');

@@ -135,12 +135,12 @@
 
 <div class="fh5co-narrow-content">
 	<div class="row">
-		<div class="col-md-4 animate-box" data-animate-effect="fadeInLeft">
+		<div class="col-md-5 animate-box" data-animate-effect="fadeInLeft">
 			<h1>ช่องทางการติดต่อ สอบถาม & สั่งซื้อ</h1>
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-md-4 animate-box" data-animate-effect="fadeInLeft">
+		<div class="col-md-5 animate-box" data-animate-effect="fadeInLeft">
 			<p class="fh5co-lead">
 				ช่องทางการติดต่อ
 				<ul>
@@ -149,7 +149,7 @@
 				</ul>
 			</p>
 		</div>
-		<div class="col-md-7 col-md-push-1">
+		<div class="col-md-7">
 			<div class="row">
 				<div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
 					<p>
