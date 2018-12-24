@@ -153,8 +153,8 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Weidner\Goutte\GoutteServiceProvider::class, // [1]
         Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
-        Arrilot\Widgets\ServiceProvider::class,
-        Intervention\Image\ImageServiceProvider::class,
+        // Arrilot\Widgets\ServiceProvider::class,
+        // Intervention\Image\ImageServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -215,9 +215,9 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'Goutte' => Weidner\Goutte\GoutteFacade::class, // [2]
         'Carbon' => 'Carbon\Carbon',
-        'Widget' => Arrilot\Widgets\Facade::class,
-        'AsyncWidget' => Arrilot\Widgets\AsyncFacade::class,
-        'Image' => Intervention\Image\Facades\Image::class,
+        // 'Widget' => Arrilot\Widgets\Facade::class,
+        // 'AsyncWidget' => Arrilot\Widgets\AsyncFacade::class,
+        // 'Image' => Intervention\Image\Facades\Image::class,
 
         'SEOMeta' => Artesaos\SEOTools\Facades\SEOMeta::class,
         'OpenGraph' => Artesaos\SEOTools\Facades\OpenGraph::class,

@@ -12,8 +12,8 @@ class Sticker extends Model
     
     // protected $dates = ['deleted_at'];
 
-    public function stamp()
-    {
-        return $this->hasMany('App\Models\Stamp', 'sticker_id', 'id');
-    }
+    // public function stamp()
+    // {
+    //     return $this->hasMany('App\Models\Stamp', 'sticker_id', 'id');
+    // }
 }

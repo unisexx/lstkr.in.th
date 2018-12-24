@@ -30,6 +30,7 @@ Route::get('search', 'HomeController@search');
 Route::get('author/{param}', 'HomeController@author');
 Route::get('tag/{param}', 'HomeController@tag');
 
+Route::controller('ajax', 'AjaxController');
 Route::controller('sticker', 'StickerController');
 Route::controller('theme', 'ThemeController');
 Route::controller('emoji', 'EmojiController');
@@ -57,10 +58,10 @@ Route::get('/test', function () {
     return view('welcome');
 });
 
-Route::get('/testimg', function () {
-    // return Image::canvas(800, 600, '#ccc')->save('bar.jpg');
-    return Image::canvas(800, 600, '#ccc')->response('jpg');
-});
+// Route::get('/testimg', function () {
+//     // return Image::canvas(800, 600, '#ccc')->save('bar.jpg');
+//     return Image::canvas(800, 600, '#ccc')->response('jpg');
+// });
 
 // test entrust
 // Route::controller('role', 'RoleController');

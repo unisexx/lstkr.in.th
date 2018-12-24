@@ -22,12 +22,13 @@ $('ducument').ready(function(){
     // ใส่ class img-fluid ให้รูปในหน้า Page เพื่อทำ responsive
     $('.pageContent img').attr('class', 'img-fluid');
 
-    // หาขนาด browser เพื่อเช็ก css
-    $(window).height();   // returns height of browser viewport
-    $(document).height(); // returns height of HTML document (same as pageHeight in screenshot)
-    $(window).width();   // returns width of browser viewport
-    $(document).width(); // returns width of HTML document (same as pageWidth in screenshot)
-
-    console.log($(document).width());
+    // อัพเดทยอดวิว
+    var productType = "{{ Request::segment(1) }}";
+    var productID = "{{ Request::segment(3) }}";
+    // console.log(productID);
+    $.ajax({
+        url: '{{ url("ajax/updateviewcount") }}',
+        data:{ productType : productType, productID : productID }
+    });
 });
 </script>
