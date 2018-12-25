@@ -204,8 +204,8 @@ figure {
 }
 
 #fh5co-aside .fh5co-footer {
-  position: absolute;
-  bottom: 40px;
+  /* position: absolute;
+  bottom: 40px; */
   font-size: 14px;
   text-align: center;
   width: 100%;
@@ -1351,10 +1351,10 @@ body.offcanvas .fh5co-nav-toggle {
 
 /* Desktops and laptops ----------- */
 @media only screen and (min-width : 1224px) {
-  /* #fh5co-logo{margin: 0 0 15px 0 !important;}
+  #fh5co-logo{margin: 0 0 15px 0 !important;}
   #fh5co-aside{width:20% !important;}
   #fh5co-main{width:80% !important;}
-  .work-item{width:147px !important;}
+  /* .work-item{width:147px !important;}
   #fh5co-main .fh5co-narrow-content{padding: 3em 0 0 !important;}
   .theme-image-detail{width: 285px !important;} */
 }

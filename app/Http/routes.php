@@ -36,6 +36,9 @@ Route::controller('theme', 'ThemeController');
 Route::controller('emoji', 'EmojiController');
 Route::controller('page', 'PageController');
 
+// ดึงข้อมูล
+Route::controller('crawler', 'CrawlerController');
+
 // เช็กล็อกอิน
 Route::group(['middleware' => 'auth'], function () {
 
