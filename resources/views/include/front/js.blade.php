@@ -26,9 +26,11 @@ $('ducument').ready(function(){
     var productType = "{{ Request::segment(1) }}";
     var productID = "{{ Request::segment(3) }}";
     // console.log(productID);
-    $.ajax({
-        url: '{{ url("ajax/updateviewcount") }}',
-        data:{ productType : productType, productID : productID }
-    });
+    if(productID != ''){
+        $.ajax({
+            url: '{{ url("ajax/updateviewcount") }}',
+            data:{ productType : productType, productID : productID }
+        });
+    }
 });
 </script>
