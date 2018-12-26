@@ -199,22 +199,22 @@ class CrawlerController extends Controller
     }
 
 
-    public function getUpdateauthor()
-    {
-        Sticker::whereNotNull('author')->whereNull('author_th')->where('status','<>','draft')->orderBy('id', 'asc')->chunk(100, function ($sticker) {
-            foreach ($sticker as $row) {
+    // public function getUpdateauthor()
+    // {
+    //     Sticker::select('id','author')->whereNotNull('author')->whereNull('author_th')->where('status','<>','draft')->orderBy('id', 'desc')->chunk(5, function ($sticker) {
+    //         foreach ($sticker as $row) {
 
-                $author = json_decode($row->author, true);
+    //             $author = json_decode($row->author, true);
 
-                // dump(@$author['en']);
+    //             // dump(@$author['en']);
 
-                $row->update([
-                    'author_th' => @$author['th'] ? $author['th'] : $author['en'],
-                    'author_en' => $author['en']
-                ]);
-            }
+    //             $row->update([
+    //                 'author_th' => @$author['th'] ? $author['th'] : $author['en'],
+    //                 'author_en' => $author['en']
+    //             ]);
+    //         }
 
-            // exit();
-        });
-    }
+    //         // exit();
+    //     });
+    // }
 }

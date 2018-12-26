@@ -311,8 +311,9 @@ body.offcanvas .fh5co-nav-toggle {
 }
 
 .work-item {
-  flex: 1 0 12%;
+  /* flex: 1 0 12%; */
   /* width: 195px; */
+  flex-basis: 175px;
   margin-bottom: 30px;
   padding: 5px;
 }
