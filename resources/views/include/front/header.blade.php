@@ -11,18 +11,18 @@
             <li><a href="{{ url('emoji/official') }}">อิโมจิทางการ</a></li>
             <li><a href="{{ url('emoji/creator') }}">อิโมจิครีเอเตอร์</a></li>
             <li><a href="{{ url('aboutus') }}">เกี่ยวกับเรา</a></li>
-            <!-- <li><a href="{{ url('contact') }}">ติดต่อเรา</a></li> -->
+            <li><a href="{{ url('search') }}">ค้นหา</a></li>
         </ul>
     </nav>
 
-    <form class="bd-search d-flex align-items-center" method="get" action="{{ url('search') }}">
+    <!-- <form class="bd-search d-flex align-items-center" method="get" action="{{ url('search') }}">
         <div class="input-group input-group-sm mb-3">
             <input type="text" class="form-control" placeholder="ค้นหา" name="q" value="{{ @$_GET['q'] }}">
             <div class="input-group-append">
                 <button class="btn btn-sm btn-outline-secondary" type="submit" id="button-addon2"><i class="icon-search"></i></button>
             </div>
         </div>
-    </form>
+    </form> -->
 
     <div class="fh5co-footer">
         <p>

@@ -2,7 +2,7 @@
 
 <div class="fh5co-narrow-content">
 	<h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">สติ๊กเกอร์ไลน์ทางการ</h2>
-	<div class="row animate-box d-flex flex-wrap justify-content-center" data-animate-effect="fadeInLeft">
+	<div class="animate-box d-flex flex-md-wrap flex-sm-nowrap" data-animate-effect="fadeInLeft">
 		@foreach($sticker_official as $row)
 		<div class="work-item text-center">
 			<a href="{{ url('sticker/product/'.$row->sticker_code) }}">
@@ -17,7 +17,7 @@
 
 <div class="fh5co-narrow-content">
 	<h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">สติ๊กเกอร์ไลน์ครีเอเตอร์</h2>
-	<div class="row animate-box d-flex flex-wrap justify-content-center" data-animate-effect="fadeInLeft">
+	<div class="animate-box d-flex flex-md-wrap flex-sm-nowrap" data-animate-effect="fadeInLeft">
 		@foreach($sticker_creator as $row)
 		<div class="work-item text-center">
 			<a href="{{ url('sticker/product/'.$row->sticker_code) }}">
@@ -32,7 +32,7 @@
 
 <div class="fh5co-narrow-content">
 	<h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">ธีมไลน์ทางการ</h2>
-	<div class="row animate-box d-flex flex-wrap justify-content-center" data-animate-effect="fadeInLeft">
+	<div class="animate-box d-flex flex-md-wrap flex-sm-nowrap" data-animate-effect="fadeInLeft">
 		@foreach($theme_official as $row)
 		<div class="work-item text-center">
 			<a href="{{ url('theme/product/'.$row->id) }}">
@@ -47,7 +47,7 @@
 
 <div class="fh5co-narrow-content">
 	<h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">ธีมไลน์ครีเอเตอร์</h2>
-	<div class="row animate-box d-flex flex-wrap justify-content-center" data-animate-effect="fadeInLeft">
+	<div class="animate-box d-flex flex-md-wrap flex-sm-nowrap" data-animate-effect="fadeInLeft">
 		@foreach($theme_creator as $row)
 		<div class="work-item text-center">
 			<a href="{{ url('theme/product/'.$row->id) }}">
@@ -62,7 +62,7 @@
 
 <div class="fh5co-narrow-content">
 	<h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">อิโมจิไลน์ทางการ</h2>
-	<div class="row animate-box d-flex flex-wrap justify-content-center" data-animate-effect="fadeInLeft">
+	<div class="animate-box d-flex flex-md-wrap flex-sm-nowrap" data-animate-effect="fadeInLeft">
 		@foreach($emoji_official as $row)
 		<div class="work-item text-center">
 			<a href="{{ url('emoji/product/'.$row->emoji_code) }}">
@@ -77,7 +77,7 @@
 
 <div class="fh5co-narrow-content">
 	<h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">อิโมจิไลน์ครีเอเตอร์</h2>
-	<div class="row animate-box d-flex flex-wrap justify-content-center" data-animate-effect="fadeInLeft">
+	<div class="animate-box d-flex flex-md-wrap flex-sm-nowrap" data-animate-effect="fadeInLeft">
 		@foreach($emoji_creator as $row)
 		<div class="work-item text-center">
 			<a href="{{ url('emoji/product/'.$row->emoji_code) }}">

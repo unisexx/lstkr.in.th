@@ -45,7 +45,7 @@ class HomeController extends Controller
                             ->where('category','<>','creator')
                             ->where('status','approve')
                             ->orderBy('threedays', 'desc')
-                            ->take(10)
+                            ->take(14)
                             ->get();
 
         // สติ๊กเกอร์ไลน์ทางการ
@@ -54,7 +54,7 @@ class HomeController extends Controller
                             ->where('category','creator')
                             ->where('status','approve')
                             ->orderBy('threedays', 'desc')
-                            ->take(10)
+                            ->take(14)
                             ->get();
 
         // ธีมไลน์ทางการ
@@ -63,7 +63,7 @@ class HomeController extends Controller
                             ->where('category','official')
                             ->where('status','approve')
                             ->orderBy('id', 'desc')
-                            ->take(10)
+                            ->take(14)
                             ->get();
 
         // ธีมไลน์ครีเอเตอร์
@@ -72,7 +72,7 @@ class HomeController extends Controller
                             ->where('category','creator')
                             ->where('status','approve')
                             ->orderBy('id', 'desc')
-                            ->take(10)
+                            ->take(14)
                             ->get();
 
         // อิโมจิทางการ
@@ -81,7 +81,7 @@ class HomeController extends Controller
                             ->where('category','official')
                             ->where('status','approve')
                             ->orderBy('id', 'desc')
-                            ->take(10)
+                            ->take(14)
                             ->get();
 
         // อิโมจิครีเอเตอร์
@@ -90,7 +90,7 @@ class HomeController extends Controller
                             ->where('category','creator')
                             ->where('status','approve')
                             ->orderBy('id', 'desc')
-                            ->take(10)
+                            ->take(14)
                             ->get();
 
         return view('home',$data);
@@ -105,7 +105,7 @@ class HomeController extends Controller
                                 ->where('title_th', 'like', $_GET['q'] . '%')
                                 ->orWhere('title_en', 'like', $_GET['q'] . '%');
         }
-        $data['sticker'] = $data['sticker']->orderBy('updated_at', 'desc')->take(8)->get();
+        $data['sticker'] = $data['sticker']->orderBy('id', 'desc')->take(8)->get();
 
         // ค้นหา theme
         $data['theme'] = new Theme;
@@ -113,7 +113,7 @@ class HomeController extends Controller
             $data['theme'] = $data['theme']
                                 ->where('title', 'like', $_GET['q'] . '%');
         }
-        $data['theme'] = $data['theme']->orderBy('updated_at', 'desc')->take(8)->get();
+        $data['theme'] = $data['theme']->orderBy('id', 'desc')->take(8)->get();
 
         // ค้นหา emoji
         $data['emoji'] = new Emoji;
@@ -121,9 +121,9 @@ class HomeController extends Controller
             $data['emoji'] = $data['emoji']
                                 ->where('title', 'like', $_GET['q'] . '%');
         }
-        $data['emoji'] = $data['emoji']->orderBy('updated_at', 'desc')->take(8)->get();
+        $data['emoji'] = $data['emoji']->orderBy('id', 'desc')->take(8)->get();
 
-        return view('home.search', $data);
+            return view('home.search', $data);
     }
 
     public function author($user_id)
