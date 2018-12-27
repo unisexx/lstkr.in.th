@@ -46,7 +46,7 @@ class ThemeController extends Controller {
 							->where('status','approve')
 							->orderBy('id', 'desc')
 							->simplePaginate(30);
-		return view('theme.official', $data);
+		return view('theme.creator', $data);
 	}
 	
 	public function getProduct($id){
