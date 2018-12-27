@@ -44,7 +44,7 @@ class AjaxController extends Controller
             }
 
             // upated threedays ในเทเบิ้ล stickers
-            DB::statement("UPDATE stickers SET threedays = (SELECT COUNT(id) total FROM sticker_views WHERE sticker_id =" . $_GET['productID'] . " AND created > NOW() - interval 3 DAY) where sticker_code = " . $_GET['productID']);
+            DB::statement("UPDATE stickers SET updated_at = '".date("Y-m-d H:i:s")."', threedays = (SELECT COUNT(id) total FROM sticker_views WHERE sticker_id =" . $_GET['productID'] . " AND created > NOW() - interval 3 DAY) where sticker_code = " . $_GET['productID']);
 
 		} elseif ($_GET['productType'] == 'theme') {
 
@@ -71,8 +71,8 @@ class AjaxController extends Controller
                 );
             }
 
-            // upated threedays ในเทเบิ้ล stickers
-            DB::statement("UPDATE themes SET threedays = (SELECT COUNT(id) total FROM sticker_views WHERE sticker_id =" . $_GET['productID'] . " AND created > NOW() - interval 3 DAY) where id = " . $_GET['productID']);
+            // upated threedays ในเทเบิ้ล themes
+            DB::statement("UPDATE themes SET updated_at = '".date("Y-m-d H:i:s")."', threedays = (SELECT COUNT(id) total FROM sticker_views WHERE sticker_id =" . $_GET['productID'] . " AND created > NOW() - interval 3 DAY) where id = " . $_GET['productID']);
 
         } elseif ($_GET['productType'] == 'emoji') {
 
@@ -99,8 +99,8 @@ class AjaxController extends Controller
                 );
             }
 
-            // upated threedays ในเทเบิ้ล stickers
-            DB::statement("UPDATE emojis SET threedays = (SELECT COUNT(id) total FROM sticker_views WHERE product_code = '" . $_GET['productID'] . "' AND created > NOW() - interval 3 DAY) where emoji_code = '" . $_GET['productID']. "'");
+            // upated threedays ในเทเบิ้ล emojis
+            DB::statement("UPDATE emojis SET updated_at = '".date("Y-m-d H:i:s")."', threedays = (SELECT COUNT(id) total FROM sticker_views WHERE product_code = '" . $_GET['productID'] . "' AND created > NOW() - interval 3 DAY) where emoji_code = '" . $_GET['productID']. "'");
 
         }
 	}
