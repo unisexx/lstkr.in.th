@@ -4,7 +4,7 @@
 
 <div class="fh5co-narrow-content">
 	<h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">อิโมจิไลน์ครีเอเตอร์</h2>
-	<div class="row animate-box d-flex flex-wrap justify-content-center" data-animate-effect="fadeInLeft">
+	<div class="animate-box d-flex flex-wrap" data-animate-effect="fadeInLeft">
 		@foreach($emoji as $row)
 		<div class="work-item text-center">
 			<a href="{{ url('emoji/product/'.$row->emoji_code) }}">

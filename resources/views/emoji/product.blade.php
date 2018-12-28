@@ -21,7 +21,7 @@
 		
 	</div>
 
-	@if($rs->detail) <p class="sticker-detail">{{ $rs->detail }}</p> @endif
+	@if($rs->detail) <p class="sticker-detail animate-box" data-animate-effect="fadeInLeft">{{ $rs->detail }}</p> @endif
 
 	<div class="animate-box" data-animate-effect="fadeInLeft">
 

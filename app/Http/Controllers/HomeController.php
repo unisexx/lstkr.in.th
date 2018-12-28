@@ -45,7 +45,7 @@ class HomeController extends Controller
                             ->where('category','<>','creator')
                             ->where('status','approve')
                             ->orderBy('threedays', 'desc')
-                            ->take(14)
+                            ->take(12)
                             ->get();
 
         // สติ๊กเกอร์ไลน์ทางการ
@@ -54,7 +54,7 @@ class HomeController extends Controller
                             ->where('category','creator')
                             ->where('status','approve')
                             ->orderBy('threedays', 'desc')
-                            ->take(14)
+                            ->take(12)
                             ->get();
 
         // ธีมไลน์ทางการ
@@ -63,7 +63,7 @@ class HomeController extends Controller
                             ->where('category','official')
                             ->where('status','approve')
                             ->orderBy('id', 'desc')
-                            ->take(14)
+                            ->take(12)
                             ->get();
 
         // ธีมไลน์ครีเอเตอร์
@@ -72,7 +72,7 @@ class HomeController extends Controller
                             ->where('category','creator')
                             ->where('status','approve')
                             ->orderBy('id', 'desc')
-                            ->take(14)
+                            ->take(12)
                             ->get();
 
         // อิโมจิทางการ
@@ -81,7 +81,7 @@ class HomeController extends Controller
                             ->where('category','official')
                             ->where('status','approve')
                             ->orderBy('id', 'desc')
-                            ->take(14)
+                            ->take(12)
                             ->get();
 
         // อิโมจิครีเอเตอร์
@@ -90,7 +90,7 @@ class HomeController extends Controller
                             ->where('category','creator')
                             ->where('status','approve')
                             ->orderBy('id', 'desc')
-                            ->take(14)
+                            ->take(12)
                             ->get();
 
         return view('home',$data);

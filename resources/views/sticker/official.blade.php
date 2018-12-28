@@ -4,7 +4,7 @@
 
 <div class="fh5co-narrow-content">
 	<h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">สติ๊กเกอร์ไลน์ทางการ</h2>
-	<div class="row animate-box d-flex flex-wrap justify-content-center" data-animate-effect="fadeInLeft">
+	<div class="animate-box d-flex flex-wrap" data-animate-effect="fadeInLeft">
 		@foreach($sticker as $row)
 		<div class="work-item text-center">
 			<a href="{{ url('sticker/product/'.$row->sticker_code) }}">

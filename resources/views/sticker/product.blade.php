@@ -21,7 +21,7 @@
 		
 	</div>
 
-	@if($rs->detail) <p class="sticker-detail">{{ $rs->detail }}</p> @endif
+	@if($rs->detail) <p class="sticker-detail animate-box" data-animate-effect="fadeInLeft">{{ $rs->detail }}</p> @endif
 
 	<div class="animate-box" data-animate-effect="fadeInLeft">
 		<img class="img-fluid" src="https://sdl-stickershop.line.naver.jp/products/0/0/{{ $rs->version }}/{{ $rs->sticker_code }}/LINEStorePC/preview.png" alt="สติ๊กเกอร์ไลน์ {{ $rs->title_th }}">

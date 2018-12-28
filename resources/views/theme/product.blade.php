@@ -21,7 +21,7 @@
 		
 	</div>
 
-	@if($rs->detail) <p class="sticker-detail">{{ $rs->detail }}</p> @endif
+	@if($rs->detail) <p class="sticker-detail animate-box" data-animate-effect="fadeInLeft">{{ $rs->detail }}</p> @endif
 
 	<div class="d-flex flex-xl-wrap flex-lg-nowrap animate-box theme-image-detail-wrap" data-animate-effect="fadeInLeft">
 		@for($x = 1; $x <= 5; $x++)

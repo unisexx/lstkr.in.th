@@ -1353,13 +1353,14 @@ body.offcanvas .fh5co-nav-toggle {
   width: 120px;
 }
 
-.theme-image-detail-wrap{
+.theme-image-detail-wrap {
   overflow-x: auto;
 }
 
-.sticker-detail{
+.sticker-detail {
   margin: 10px 0 0;
 }
+
 
 /* Desktops and laptops ----------- */
 @media only screen and (min-width : 1224px) {
@@ -1433,43 +1434,47 @@ body.offcanvas .fh5co-nav-toggle {
     width: 58px;
   }
 
-  .theme-image-detail{
+  .theme-image-detail {
     width: 200px;
   }
 }
 
 /* ขนาดจอ laptop ----------- */
-@media only screen and (min-device-width : 1280px) and (max-device-width : 1440px) {
-  /* หน้าแรกปกติ โชว์ 14 ให้เอาออก 4 เพื่อความสวยงาม (โชว์แถวละ 5)*/
-  .flex-sm-nowrap .work-item:nth-last-child(-n+4){
-    display: none;
-  }
-}
 @media only screen and (min-device-width : 1280px) {
-  /* หน้าแรกปกติ โชว์ 14 ให้เอาออก 4 เพื่อความสวยงาม (โชว์แถวละ 5)*/
-  .work-item{
-    width: 160px;
+
+  .work-item {
+    width: 134px;
   }
 
   /* หน้าธีม product */
-  .theme-image-detail{
-    width:265px;
+  .theme-image-detail {
+    width: 265px;
   }
 }
+
 @media only screen and (min-device-width : 1440px) {
-  /* หน้าแรกปกติ โชว์ 14 ให้เอาออก 4 เพื่อความสวยงาม (โชว์แถวละ 5)*/
-  .work-item{
-    width: 175px;
+  .work-item {
+    width: 150px;
+  }
+}
+
+/* ขนาดจอ PC เป็นต้นไป ----------- */
+@media only screen and (min-device-width : 1441px) {
+
+  /* หน้าแรก */
+  .work-item {
+    width: 200px;
   }
 
   /* หน้าธีม product */
-  .theme-image-detail{
-    width:300px;
+  .theme-image-detail {
+    width: 360px;
   }
 }
 
 /* ขนาดจอ ipad & ipad pro ----------- */
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+
   /* หน้า home */
   #fh5co-main .fh5co-narrow-content:first-child {
     padding-bottom: 10px;
@@ -1485,7 +1490,7 @@ body.offcanvas .fh5co-nav-toggle {
     margin-bottom: 0px;
   }
 
-  .flex-md-wrap{
+  .flex-md-wrap {
     flex-wrap: nowrap !important;
     overflow-x: auto;
   }
@@ -1511,8 +1516,8 @@ body.offcanvas .fh5co-nav-toggle {
   }
 
   /* หน้าธีม product */
-  .img-emoji{
-    width:85px;
+  .img-emoji {
+    width: 85px;
   }
 }
 
