@@ -59,7 +59,7 @@ if(!function_exists('convert_line_coin_2_money'))
 	function convert_line_coin_2_money($coin)
 	{
 		$bath = array('250'=>'150','200'=>'120','150'=>'90','100'=>'60','50'=>'30','2'=>'1');
-		return $bath[$coin];
+		return @$bath[$coin];
 	}
 }
 

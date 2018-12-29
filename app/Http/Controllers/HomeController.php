@@ -62,7 +62,7 @@ class HomeController extends Controller
         $data['theme_official'] = $data['theme_official']
                             ->where('category','official')
                             ->where('status','approve')
-                            ->orderBy('id', 'desc')
+                            ->orderBy('threedays', 'desc')
                             ->take(12)
                             ->get();
 
@@ -71,7 +71,7 @@ class HomeController extends Controller
         $data['theme_creator'] = $data['theme_creator']
                             ->where('category','creator')
                             ->where('status','approve')
-                            ->orderBy('id', 'desc')
+                            ->orderBy('threedays', 'desc')
                             ->take(12)
                             ->get();
 
@@ -80,7 +80,7 @@ class HomeController extends Controller
         $data['emoji_official'] = $data['emoji_official']
                             ->where('category','official')
                             ->where('status','approve')
-                            ->orderBy('id', 'desc')
+                            ->orderBy('threedays', 'desc')
                             ->take(12)
                             ->get();
 
@@ -89,7 +89,7 @@ class HomeController extends Controller
         $data['emoji_creator'] = $data['emoji_creator']
                             ->where('category','creator')
                             ->where('status','approve')
-                            ->orderBy('id', 'desc')
+                            ->orderBy('threedays', 'desc')
                             ->take(12)
                             ->get();
 
