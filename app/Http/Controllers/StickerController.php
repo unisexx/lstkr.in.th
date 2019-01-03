@@ -23,32 +23,44 @@ class StickerController extends Controller
 
 	}
 
-	public function getOfficial()
+	public function getOfficial($type)
 	{
 		// SEO
 		SEO::setTitle('สติ๊กเกอร์ไลน์ยอดนิยม');
 		SEO::setDescription('รวมสติ๊กเกอร์ไลน์ขายดี แนะนำ ฮิตๆ ยอดนิยม');
+
+		if($type == 'top'){
+			$orderByField = 'threedays';
+		}elseif($type == 'new'){
+			$orderByField = 'id';
+		}
 
 		$data['sticker'] = new Sticker;
 		$data['sticker'] = $data['sticker']
 							->where('category','<>','creator')
 							->where('status','approve')
-							->orderBy('id', 'desc')
+							->orderBy($orderByField, 'desc')
 							->simplePaginate(30);
 		return view('sticker.official', $data);
 	}
 
-	public function getCreator()
+	public function getCreator($type)
 	{
 		// SEO
 		SEO::setTitle('สติ๊กเกอร์ไลน์ยอดนิยม');
 		SEO::setDescription('รวมสติ๊กเกอร์ไลน์ขายดี แนะนำ ฮิตๆ ยอดนิยม');
 
+		if($type == 'top'){
+			$orderByField = 'threedays';
+		}elseif($type == 'new'){
+			$orderByField = 'id';
+		}
+
 		$data['sticker'] = new Sticker;
 		$data['sticker'] = $data['sticker']
 							->where('category','creator')
 							->where('status','approve')
-							->orderBy('id', 'desc')
+							->orderBy($orderByField, 'desc')
 							->simplePaginate(30);
 		return view('sticker.creator', $data);
 	}

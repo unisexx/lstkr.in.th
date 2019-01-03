@@ -19,32 +19,44 @@ class ThemeController extends Controller {
 		
 	}
 	
-	public function getOfficial()
+	public function getOfficial($type)
 	{
 		// SEO
 		SEO::setTitle('สติ๊กเกอร์ไลน์ยอดนิยม');
 		SEO::setDescription('รวมสติ๊กเกอร์ไลน์ขายดี แนะนำ ฮิตๆ ยอดนิยม');
+
+		if($type == 'top'){
+			$orderByField = 'threedays';
+		}elseif($type == 'new'){
+			$orderByField = 'id';
+		}
 
 		$data['theme'] = new Theme;
 		$data['theme'] = $data['theme']
 							->where('category','official')
 							->where('status','approve')
-							->orderBy('id', 'desc')
+							->orderBy($orderByField, 'desc')
 							->simplePaginate(30);
 		return view('theme.official', $data);
 	}
 
-	public function getCreator()
+	public function getCreator($type)
 	{
 		// SEO
 		SEO::setTitle('สติ๊กเกอร์ไลน์ยอดนิยม');
 		SEO::setDescription('รวมสติ๊กเกอร์ไลน์ขายดี แนะนำ ฮิตๆ ยอดนิยม');
 
+		if($type == 'top'){
+			$orderByField = 'threedays';
+		}elseif($type == 'new'){
+			$orderByField = 'id';
+		}
+
 		$data['theme'] = new Theme;
 		$data['theme'] = $data['theme']
 							->where('category','creator')
 							->where('status','approve')
-							->orderBy('id', 'desc')
+							->orderBy($orderByField, 'desc')
 							->simplePaginate(30);
 		return view('theme.creator', $data);
 	}

@@ -4,6 +4,12 @@
 
 <div class="fh5co-narrow-content">
 	<h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">สติ๊กเกอร์ไลน์ทางการ</h2>
+
+	<select class="custom-select col-md-2 animate-box" data-animate-effect="fadeInLeft" onchange="location = '{{ Request::root() }}/sticker/official/'+this.value;">
+		<option value="top" {{ Request::segment(3) == 'top' ? 'selected' : '' }}>ฮิต</option>
+		<option value="new" {{ Request::segment(3) == 'new' ? 'selected' : '' }}>ใหม่ล่าสุด</option>
+	</select>
+
 	<div class="animate-box d-flex flex-wrap" data-animate-effect="fadeInLeft">
 		@foreach($sticker as $row)
 		<div class="work-item text-center">
