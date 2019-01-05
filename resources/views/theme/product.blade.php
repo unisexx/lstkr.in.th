@@ -24,8 +24,8 @@
 	<!-- ปุ่มสั่งซื้อ -->
 	<div class="text-center animate-box" data-animate-effect="fadeInLeft">
 		<hr>
-			<a href="http://line.me/ti/p/~ratasak1234" target="_blank"><button type="button" class="btn btn-success">สั่งซื้อคลิก</button></a>
-			<a href="line://shop/theme/detail?id={{ $rs->theme_code }}" target="_blank"><button type="button" class="btn btn-secondary">ดูตัวอย่างในแอพไลน์</button></a>
+			<a href="https://line.me/ti/p/~ratasak1234" target="_blank"><button type="button" class="btn btn-success">สั่งซื้อคลิก</button></a>
+			<a href="https://line.me/S/shop/theme/detail?id={{ $rs->theme_code }}" target="_blank"><button type="button" class="btn btn-secondary">ดูตัวอย่างในแอพไลน์</button></a>
 		<hr>
 	</div>
 	<!-- ปุ่มสั่งซื้อ -->
