@@ -39,14 +39,31 @@ class HomeController extends Controller
         SEOMeta::setKeywords('line, sticker, theme, creator, animation, sound, popup, ไลน์, สติ๊กเกอร์, ธีม, ครีเอเทอร์, ดุ๊กดิ๊ก, มีเสียง, ป๊อปอัพ');
         SEOMeta::addKeyword('line, sticker, theme, creator, animation, sound, popup, ไลน์, สติ๊กเกอร์, ธีม, ครีเอเทอร์, ดุ๊กดิ๊ก, มีเสียง, ป๊อปอัพ');
 
-        // สติ๊กเกอร์ไลน์ทางการ
-        $data['sticker_official'] = new Sticker;
-        $data['sticker_official'] = $data['sticker_official']
-                            ->where('category','<>','creator')
+        // สติ๊กเกอร์ไลน์ทางการ (ไทย)
+        $data['sticker_official_thai'] = new Sticker;
+        $data['sticker_official_thai'] = $data['sticker_official_thai']
                             ->where('status','approve')
+                            ->where('category','official')
+                            ->where(function($q){
+                                $q->where('country','global')->orWhere('country','thai');
+                            })
                             ->orderBy('threedays', 'desc')
                             ->take(12)
                             ->get();
+
+        // DB::enableQueryLog();
+        // สติ๊กเกอร์ไลน์ทางการ (ต่างประเทศ)
+        $data['sticker_official_oversea'] = new Sticker;
+        $data['sticker_official_oversea'] = $data['sticker_official_oversea']
+                            ->where('status','approve')
+                            ->where('category','official')
+                            ->where(function($q){
+                                $q->where('country','!=','global')->where('country','!=','thai');
+                            })
+                            ->orderBy('threedays', 'desc')
+                            ->take(12)
+                            ->get();
+        // dd(DB::getQueryLog());
 
         // สติ๊กเกอร์ไลน์ทางการ
         $data['sticker_creator'] = new Sticker;

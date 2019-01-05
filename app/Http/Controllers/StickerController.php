@@ -23,12 +23,13 @@ class StickerController extends Controller
 
 	}
 
-	public function getOfficial($type)
+	public function getOfficial($country,$type)
 	{
 		// SEO
 		SEO::setTitle('สติ๊กเกอร์ไลน์ยอดนิยม');
 		SEO::setDescription('รวมสติ๊กเกอร์ไลน์ขายดี แนะนำ ฮิตๆ ยอดนิยม');
 
+		// ประเภท : top, new
 		if($type == 'top'){
 			$orderByField = 'threedays';
 		}elseif($type == 'new'){
@@ -37,10 +38,21 @@ class StickerController extends Controller
 
 		$data['sticker'] = new Sticker;
 		$data['sticker'] = $data['sticker']
-							->where('category','<>','creator')
 							->where('status','approve')
+							->where('category','official')
+							->where(function($q) use ($country){
+
+								// ประเทศ : thai, oversea
+								if($country == 'thai'){
+									$q->where('country','global')->orWhere('country','thai');
+								}elseif($country == 'oversea'){
+									$q->where('country','!=','global')->where('country','!=','thai');
+								}
+								
+							})
 							->orderBy($orderByField, 'desc')
 							->simplePaginate(30);
+
 		return view('sticker.official', $data);
 	}
 
