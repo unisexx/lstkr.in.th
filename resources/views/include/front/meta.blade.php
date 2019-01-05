@@ -1,10 +1,10 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 {!! SEO::generate() !!}
-<title>Nitro &mdash; Free HTML5 Bootstrap Website Template by FreeHTML5.co</title>
+<title>Linesticker.in.th &mdash; ขายสติ๊กเกอร์ไลน์ ธีมไลน์ อิโมจิไลน์ของแท้ ราคาถูก</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Free HTML5 Website Template by FreeHTML5.co" />
-<meta name="keywords" content="free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
+<meta name="description" content="ขายสติ๊กเกอร์ไลน์ ธีมไลน์ อิโมจิไลน์ของแท้ ซื้อง่าย ราคาถูก" />
+<meta name="keywords" content="line, stickerline, themeline, emojiline, sticker, theme, emoji" />
 <meta name="author" content="FreeHTML5.co" />
 
 <!-- 
@@ -41,8 +41,13 @@ Facebook: 		https://www.facebook.com/fh5co
 
 <!-- Animate.css -->
 <link rel="stylesheet" href="nitro_theme/css/animate.css">
+
 <!-- Icomoon Icon Fonts-->
-<link rel="stylesheet" href="nitro_theme/css/icomoon.css">
+<!-- <link rel="stylesheet" href="nitro_theme/css/icomoon.css"> -->
+
+<!-- Font Awesome-->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
 <!-- Bootstrap  -->
 <!-- <link rel="stylesheet" href="nitro_theme/css/bootstrap.css"> -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
@@ -50,6 +55,7 @@ Facebook: 		https://www.facebook.com/fh5co
 <!-- Owl Carousel -->
 <link rel="stylesheet" href="nitro_theme/css/owl.carousel.min.css">
 <link rel="stylesheet" href="nitro_theme/css/owl.theme.default.min.css">
+
 <!-- Theme style  -->
 <link rel="stylesheet" href="nitro_theme/css/style.css">
 

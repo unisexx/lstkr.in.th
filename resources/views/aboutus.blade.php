@@ -164,7 +164,7 @@
 				</div>
 				<div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
 					<p>แสกน QR Code</p>
-					<img class="img-fluid" src="image/qr_line2me.png" width="135" height="135">
+					<a href="http://line.me/ti/p/~ratasak1234" target="_blank"><img class="img-fluid" src="image/qr_ratasak1234.png" width="135" height="135"></a>
 				</div>
 			</div>
 		</div>

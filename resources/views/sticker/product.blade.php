@@ -21,6 +21,13 @@
 		
 	</div>
 
+	<div class="text-center animate-box" data-animate-effect="fadeInLeft">
+		<hr>
+			<a href="http://line.me/ti/p/~ratasak1234" target="_blank"><button type="button" class="btn btn-success">สั่งซื้อคลิก</button></a>
+			<a href="line://shop/sticker/detail?id={{ $rs->sticker_code }}" target="_blank"><button type="button" class="btn btn-secondary">ดูตัวอย่างในแอพไลน์</button></a>
+		<hr>
+	</div>
+
 	@if($rs->detail) <p class="sticker-detail animate-box" data-animate-effect="fadeInLeft">{{ $rs->detail }}</p> @endif
 
 	<div class="animate-box" data-animate-effect="fadeInLeft">

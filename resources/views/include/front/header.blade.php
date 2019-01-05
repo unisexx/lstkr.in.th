@@ -1,6 +1,6 @@
 <aside id="fh5co-aside" role="complementary" class="border js-fullheight">
 
-    <h1 id="fh5co-logo"><a href="http://line.me/ti/p/@line2me.in.th"><img class="img-fluid" width="115" height="115" src="https://linesticker.in.th/image/qr_line2me.png" alt="ขายสติ๊กเกอร์ไลน์ ธีมไลน์ อิโมจิไลน์ ของแท้ ไม่มีหาย"></a></h1>
+    <h1 id="fh5co-logo"><a href="http://line.me/ti/p/~ratasak1234" target="_blank"><img class="img-fluid" width="115" height="115" src="https://linesticker.in.th/image/qr_ratasak1234.png" alt="ขายสติ๊กเกอร์ไลน์ ธีมไลน์ อิโมจิไลน์ ของแท้ ไม่มีหาย"></a></h1>
     <nav id="fh5co-main-menu" role="navigation">
         <ul>
             <li class="fh5co-active"><a href="home">หน้าแรก</a></li>
@@ -33,7 +33,7 @@
             </small>
         </p>
         <ul>
-            <li><a href="https://www.facebook.com/line2me.in.th/" target="_blank"><i class="icon-facebook"></i></a></li>
+            <li><a href="https://www.facebook.com/line2me.in.th/" target="_blank"><i class="fab fa-facebook"></i></a></li>
             <!-- <li><a href="#"><i class="icon-twitter"></i></a></li>
             <li><a href="#"><i class="icon-instagram"></i></a></li>
             <li><a href="#"><i class="icon-linkedin"></i></a></li> -->
