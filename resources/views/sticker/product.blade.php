@@ -21,19 +21,38 @@
 		
 	</div>
 
+	<!-- ปุ่มสั่งซื้อ -->
 	<div class="text-center animate-box" data-animate-effect="fadeInLeft">
 		<hr>
 			<a href="http://line.me/ti/p/~ratasak1234" target="_blank"><button type="button" class="btn btn-success">สั่งซื้อคลิก</button></a>
 			<a href="line://shop/sticker/detail?id={{ $rs->sticker_code }}" target="_blank"><button type="button" class="btn btn-secondary">ดูตัวอย่างในแอพไลน์</button></a>
 		<hr>
 	</div>
+	<!-- ปุ่มสั่งซื้อ -->
 
 	@if($rs->detail) <p class="sticker-detail animate-box" data-animate-effect="fadeInLeft">{{ $rs->detail }}</p> @endif
 
 	<div class="animate-box" data-animate-effect="fadeInLeft">
 		<img class="img-fluid" src="https://sdl-stickershop.line.naver.jp/products/0/0/{{ $rs->version }}/{{ $rs->sticker_code }}/LINEStorePC/preview.png" alt="สติ๊กเกอร์ไลน์ {{ $rs->title_th }}">
 	</div>
+
+	<!-- Social Share -->
+	<hr>
+	<ul class="list-inline">
+		<li class="list-inline-item">
+			แชร์ลิ้งค์ : 
+		</li>
+		<li class="list-inline-item">
+			<a href="https://social-plugins.line.me/lineit/share?url={{ Request::url() }}" target="_blank"><i class="fab fa-2x fa-line"></i></a>
+		</li>
+		<li class="list-inline-item">
+			<a href="https://twitter.com/home?status={{ Request::url() }}" target="_blank"><i class="fab fa-2x fa-twitter"></i></a>
+		</li>
+		<li class="list-inline-item">
+			<a href="https://www.facebook.com/sharer/sharer.php?u={{ Request::url() }}" target="_blank"><i class="fab fa-2x fa-facebook-square"></i></a>
+		</li>
+	</ul>
+	<!-- Social Share -->
 		
 </div>
-
 @endsection
