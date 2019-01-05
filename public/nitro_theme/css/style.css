@@ -1302,6 +1302,10 @@ body.offcanvas .fh5co-nav-toggle {
 /*# sourceMappingURL=style.css.map */
 
 /* dear custom */
+.read-more-text {
+  margin: 0px;
+}
+
 .pagination>li>a,
 .pagination>li>span {
   position: relative;
@@ -1391,7 +1395,7 @@ body.offcanvas .fh5co-nav-toggle {
   }
 
   .fh5co-heading {
-    font-size: 18px;
+    font-size: 20px;
     margin-bottom: 0px;
   }
 
@@ -1436,6 +1440,12 @@ body.offcanvas .fh5co-nav-toggle {
 
   .theme-image-detail {
     width: 200px;
+  }
+
+  /* หน้า about us */
+  .aboutus-heading {
+    font-size: 30px;
+    margin-bottom: 15px;
   }
 }
 

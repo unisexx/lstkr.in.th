@@ -3,7 +3,7 @@
 <div class="fh5co-narrow-content">
 	<div class="row">
 		<div class="col-md-5">
-			<h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">Linesticker.in.th <!--<span>A Web Studio</span>--></h2>
+			<h2 class="fh5co-heading animate-box aboutus-heading" data-animate-effect="fadeInLeft">Linesticker.in.th</h2>
 			<p class="fh5co-lead animate-box" data-animate-effect="fadeInLeft">จำหน่ายสติ๊กเกอร์ไลน์ ธีมไลน์ อิโมจิไลน์ ของแท้ไม่มีหาย เชื่อถือได้ 100% ที่เปิดให้บริการอย่างยาวนานมากว่า 8 ปี</p>
 			<p class="animate-box" data-animate-effect="fadeInLeft">ภายในร้านตอนนี้มีสติ๊กเกอร์ไลน์ ธีมไลน์ และอิโมจิไลน์ รวมกันกว่าล้านแบบ ไม่ว่าจะเป็นของไทย หรือของต่างประเทศ ก็สามารถเข้ามาดูได้ทั้งหมดโดยไม่จำกัดโซน</p>
 		</div>
@@ -42,7 +42,7 @@
 
 
 <div class="fh5co-narrow-content">
-	<h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">ซื้อกับเรา <span>ดีกว่ายังไง?</span></h2>
+	<h2 class="fh5co-heading animate-box aboutus-heading" data-animate-effect="fadeInLeft">ซื้อกับเรา <span>ดีกว่ายังไง?</span></h2>
 	<div class="row">
 		<div class="col-md-6">
 			<div class="fh5co-feature animate-box" data-animate-effect="fadeInLeft">
@@ -97,15 +97,15 @@
 	<div class="fh5co-narrow-content animate-box">
 		<div class="row" >
 			<div class="col-md-4 text-center">
-				<span class="fh5co-counter js-counter" data-from="0" data-to="1360378" data-speed="5000" data-refresh-interval="50"></span>
+				<span class="fh5co-counter js-counter" data-from="0" data-to="1415258" data-speed="5000" data-refresh-interval="50"></span>
 				<span class="fh5co-counter-label">สติ๊กเกอร์ไลน์</span>
 			</div>
 			<div class="col-md-4 text-center">
-				<span class="fh5co-counter js-counter" data-from="0" data-to="300389" data-speed="5000" data-refresh-interval="50"></span>
+				<span class="fh5co-counter js-counter" data-from="0" data-to="352806" data-speed="5000" data-refresh-interval="50"></span>
 				<span class="fh5co-counter-label">ธีมไลน์</span>
 			</div>
 			<div class="col-md-4 text-center">
-				<span class="fh5co-counter js-counter" data-from="0" data-to="4984" data-speed="5000" data-refresh-interval="50"></span>
+				<span class="fh5co-counter js-counter" data-from="0" data-to="8011" data-speed="5000" data-refresh-interval="50"></span>
 				<span class="fh5co-counter-label">อิโมจิไลน์</span>
 			</div>
 		</div>
@@ -114,7 +114,7 @@
 
 <div class="fh5co-cards">
 	<div class="fh5co-narrow-content">
-		<h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">ข่าวประชาสัมพันธ์</h2>
+		<h2 class="fh5co-heading animate-box aboutus-heading" data-animate-effect="fadeInLeft">ข่าวประชาสัมพันธ์</h2>
 
 		<div class="fh5co-flex-wrap">
 			<div class="fh5co-card animate-box" data-animate-effect="fadeInLeft">

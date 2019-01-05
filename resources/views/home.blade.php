@@ -1,7 +1,10 @@
 @extends('layouts.front') @section('content')
 
 <div class="fh5co-narrow-content">
-	<h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">สติ๊กเกอร์ไลน์ทางการ</h2>
+	<div class="d-flex justify-content-between align-items-baseline animate-box" data-animate-effect="fadeInLeft">
+		<h2 class="fh5co-heading">สติ๊กเกอร์ไลน์ทางการ</h2>
+		<p class="text-right read-more-text"><a href="{{ url('sticker/official/top') }}">ดูทั้งหมด ></a></p>
+	</div>
 	<div class="animate-box d-flex flex-md-wrap flex-sm-nowrap" data-animate-effect="fadeInLeft">
 		@foreach($sticker_official as $row)
 		<div class="work-item text-center">
@@ -16,7 +19,10 @@
 </div>
 
 <div class="fh5co-narrow-content">
-	<h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">สติ๊กเกอร์ไลน์ครีเอเตอร์</h2>
+	<div class="d-flex justify-content-between align-items-baseline animate-box" data-animate-effect="fadeInLeft">
+		<h2 class="fh5co-heading">สติ๊กเกอร์ไลน์ครีเอเตอร์</h2>
+		<p class="text-right read-more-text"><a href="{{ url('sticker/creator/top') }}">ดูทั้งหมด ></a></p>
+	</div>
 	<div class="animate-box d-flex flex-md-wrap flex-sm-nowrap" data-animate-effect="fadeInLeft">
 		@foreach($sticker_creator as $row)
 		<div class="work-item text-center">
@@ -31,7 +37,10 @@
 </div>
 
 <div class="fh5co-narrow-content">
-	<h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">ธีมไลน์ทางการ</h2>
+	<div class="d-flex justify-content-between align-items-baseline animate-box" data-animate-effect="fadeInLeft">
+		<h2 class="fh5co-heading">ธีมไลน์ทางการ</h2>
+		<p class="text-right read-more-text"><a href="{{ url('theme/official/top') }}">ดูทั้งหมด ></a></p>
+	</div>
 	<div class="animate-box d-flex flex-md-wrap flex-sm-nowrap" data-animate-effect="fadeInLeft">
 		@foreach($theme_official as $row)
 		<div class="work-item text-center">
@@ -46,7 +55,10 @@
 </div>
 
 <div class="fh5co-narrow-content">
-	<h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">ธีมไลน์ครีเอเตอร์</h2>
+	<div class="d-flex justify-content-between align-items-baseline animate-box" data-animate-effect="fadeInLeft">
+		<h2 class="fh5co-heading">ธีมไลน์ครีเอเตอร์</h2>
+		<p class="text-right read-more-text"><a href="{{ url('theme/creator/top') }}">ดูทั้งหมด ></a></p>
+	</div>
 	<div class="animate-box d-flex flex-md-wrap flex-sm-nowrap" data-animate-effect="fadeInLeft">
 		@foreach($theme_creator as $row)
 		<div class="work-item text-center">
@@ -61,7 +73,10 @@
 </div>
 
 <div class="fh5co-narrow-content">
-	<h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">อิโมจิไลน์ทางการ</h2>
+	<div class="d-flex justify-content-between align-items-baseline animate-box" data-animate-effect="fadeInLeft">
+		<h2 class="fh5co-heading">อิโมจิไลน์ทางการ</h2>
+		<p class="text-right read-more-text"><a href="{{ url('emoji/official/top') }}">ดูทั้งหมด ></a></p>
+	</div>
 	<div class="animate-box d-flex flex-md-wrap flex-sm-nowrap" data-animate-effect="fadeInLeft">
 		@foreach($emoji_official as $row)
 		<div class="work-item text-center">
@@ -76,7 +91,10 @@
 </div>
 
 <div class="fh5co-narrow-content">
-	<h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">อิโมจิไลน์ครีเอเตอร์</h2>
+	<div class="d-flex justify-content-between align-items-baseline animate-box" data-animate-effect="fadeInLeft">
+		<h2 class="fh5co-heading">อิโมจิไลน์ครีเอเตอร์</h2>
+		<p class="text-right read-more-text"><a href="{{ url('emoji/creator/top') }}">ดูทั้งหมด ></a></p>
+	</div>
 	<div class="animate-box d-flex flex-md-wrap flex-sm-nowrap" data-animate-effect="fadeInLeft">
 		@foreach($emoji_creator as $row)
 		<div class="work-item text-center">
