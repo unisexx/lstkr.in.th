@@ -7,7 +7,7 @@
 	<div class="d-flex animate-box" data-animate-effect="fadeInLeft">
 
 		<div class="sticker-image-cover">
-			<img class="img-fluid" src="https://sdl-stickershop.line.naver.jp/products/0/0/{{ $rs->version }}/{{ $rs->sticker_code }}/LINEStorePC/main.png" alt="สติ๊กเกอร์ไลน์ {{ $rs->title_th }}">
+			<img class="img-fluid" src="{{ get_sticker_img_url($rs->stickerresourcetype,$rs->version,$rs->sticker_code) }}" alt="สติ๊กเกอร์ไลน์ {{ $rs->title_th }}" onclick="this.src = this.src">
 		</div>
 
 		<div class="sticker-infomation">
