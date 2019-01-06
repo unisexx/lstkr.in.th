@@ -65,9 +65,9 @@ class EmojiController extends Controller
 		return view('emoji.creator', $data);
 	}
 
-	public function getProduct($emoji_code = null)
+	public function getProduct($id)
 	{
-		$data['rs'] = Emoji::where('emoji_code',$emoji_code)->first();
+		$data['rs'] = Emoji::find($id);
 
 		// SEO
 		SEO::setTitle($data['rs']->title . ' - อิโมจิไลน์');

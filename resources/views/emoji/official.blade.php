@@ -13,7 +13,7 @@
 	<div class="animate-box d-flex flex-wrap" data-animate-effect="fadeInLeft">
 		@foreach($emoji as $row)
 		<div class="work-item text-center">
-			<a href="{{ url('emoji/product/'.$row->emoji_code) }}">
+			<a href="{{ url('emoji/product/'.$row->id) }}">
 				<img src="https://stickershop.line-scdn.net/sticonshop/v1/product/{{ $row->emoji_code }}/iphone/main.png" alt="สติ๊กเกอร์ไลน์ {{ $row->title }}" class="img-fluid">
 				<h3 class="fh5co-work-title">{{ $row->title }}</h3>
 				<p>{{ ucfirst($row->country) }}, {{ $row->price }} บาท</p>
