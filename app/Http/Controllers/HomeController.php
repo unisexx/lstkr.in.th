@@ -11,6 +11,7 @@ use App\Models\Emoji;
 use DB;
 use SEO;
 use SEOMeta;
+use Carbon;
 
 class HomeController extends Controller
 {
@@ -34,10 +35,21 @@ class HomeController extends Controller
         SEO::setTitle('ขายสติ๊กเกอร์ไลน์ ธีมไลน์ อิโมจิไลน์ ของแท้ ไม่มีหาย');
         SEO::setDescription('ขายสติ๊กเกอร์ไลน์ ธีมไลน์ อิโมจิไลน์ ของแท้ ไม่มีหาย เชื่อถือได้ 100% ที่เปิดให้บริการมากว่า 8 ปี');
         SEO::opengraph()->setUrl(url()->current());
-        SEO::addImages('https://i.imgur.com/M1FvcTu.png');
+        SEO::addImages('https://linesticker.in.th/image/qr_ratasak1234.png');
         SEO::twitter()->setSite('@line2me_th');
         SEOMeta::setKeywords('line, sticker, theme, creator, animation, sound, popup, ไลน์, สติ๊กเกอร์, ธีม, ครีเอเทอร์, ดุ๊กดิ๊ก, มีเสียง, ป๊อปอัพ');
         SEOMeta::addKeyword('line, sticker, theme, creator, animation, sound, popup, ไลน์, สติ๊กเกอร์, ธีม, ครีเอเทอร์, ดุ๊กดิ๊ก, มีเสียง, ป๊อปอัพ');
+
+        // DB::enableQueryLog();
+        // สติ๊กเกอร์ไลน์โปรโมท
+        $data['sticker_promote'] = DB::table('promotes')
+            ->join('stickers', 'promotes.product_code', '=', 'stickers.sticker_code')
+            ->select('stickers.*')
+            ->where('promotes.end_date', '>=', Carbon::now()->toDateString())
+            ->inRandomOrder()
+            ->take(30)
+            ->get();
+        // dump(DB::getQueryLog());
 
         // สติ๊กเกอร์ไลน์ทางการ (ไทย)
         $data['sticker_official_thai'] = new Sticker;
@@ -51,7 +63,6 @@ class HomeController extends Controller
                             ->take(12)
                             ->get();
 
-        // DB::enableQueryLog();
         // สติ๊กเกอร์ไลน์ทางการ (ต่างประเทศ)
         $data['sticker_official_oversea'] = new Sticker;
         $data['sticker_official_oversea'] = $data['sticker_official_oversea']
@@ -63,7 +74,6 @@ class HomeController extends Controller
                             ->orderBy('threedays', 'desc')
                             ->take(12)
                             ->get();
-        // dd(DB::getQueryLog());
 
         // สติ๊กเกอร์ไลน์ทางการ
         $data['sticker_creator'] = new Sticker;
