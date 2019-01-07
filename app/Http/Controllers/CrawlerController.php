@@ -126,6 +126,21 @@ class CrawlerController extends Controller
 
                 $crawler_page = Goutte::request('GET','https://store.line.me/stickershop/product/'.$sticker_code.'/th');
 
+                // หา stamp_start & stamp_end
+                for ($i = 0; $i < 40; $i++) {
+                    // check node empty
+                    if ($crawler_page->filter('.mdCMN09Image')->eq($i)->count() != 0) {
+                        $imgTxt = $crawler_page->filter('.mdCMN09Image')->eq($i)->attr('style');
+                        $image_path = explode("/", getUrlFromText($imgTxt));
+                        $stamp_code = $image_path[6];
+                        // dump($stamp_code);
+
+                        $data[] = array(
+                            'stamp_code' => $stamp_code,
+                        );
+                    }
+                }
+
                 // หาเวอร์ชั่นของสติ๊กเกอร์โดยวิเคราะห์จาก url ของรูปสติ๊กเกอร์
                 $image = trim($crawler_page->filter('div.mdCMN08Img > img')->attr('src'));
                 $image = explode("/", $image);
@@ -155,6 +170,8 @@ class CrawlerController extends Controller
                 $created             = date("Y-m-d H:i:s");
                 $price               = @th_2_coin(substr(trim($crawler_page->filter('p.mdCMN08Price')->text()),0,-3));
                 $country             = "thai";
+                $stamp_start         = reset($data)['stamp_code'];
+                $stamp_end           = end($data)['stamp_code'];
 
                 // dump($productInfo);
                 // dump($price);
@@ -180,8 +197,12 @@ class CrawlerController extends Controller
                         'hasanimation'        => $hasanimation,
                         'hassound'            => $hassound,
                         'stickerresourcetype' => $stickerresourcetype,
+                        'stamp_start'         => $stamp_start,
+                        'stamp_end'           => $stamp_end
                     ]
                 );
+
+                unset($data);
 
                 dump($title_th);
             }// endif
@@ -306,4 +327,37 @@ class CrawlerController extends Controller
     //         // exit();
     //     });
     // }
+
+    public function getUpdatestamp()
+    {
+        Sticker::select('id','sticker_code')->whereNull('stamp_start')->whereNull('stamp_end')->where('status','<>','draft')->orderBy('id', 'asc')->chunk(20, function ($sticker) {
+            foreach ($sticker as $row) {
+
+                $crawler = Goutte::request('GET','https://yabeline.tw/Stickers_Data.php?Number='.$row->sticker_code);
+                
+                for ($i = 0; $i < 40; $i++) {
+                    if ($crawler->filter('.stickerSub > img')->eq($i)->count() != 0) {
+                        $imgTxt = $crawler->filter('.stickerSub > img')->eq($i)->attr('src');
+                        $image_path = explode("/", getUrlFromText($imgTxt));
+                        $stamp_code = $image_path[6];
+                        // dump($stamp_code);
+        
+                        $data[] = array(
+                            'stamp_code' => $stamp_code
+                        );
+                    }
+                }
+
+                $row->update([
+                    'stamp_start' => reset($data)['stamp_code'],
+                    'stamp_end' => end($data)['stamp_code']
+                ]);
+
+                unset ($data);
+            }
+
+            exit();
+        });
+        
+    }
 }
