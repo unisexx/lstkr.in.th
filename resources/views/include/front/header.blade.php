@@ -4,8 +4,8 @@
     <nav id="fh5co-main-menu" role="navigation">
         <ul>
             <li class="fh5co-active"><a href="home">หน้าแรก</a></li>
-            <li><a href="{{ url('sticker/official/thai/top') }}">สติ๊กเกอร์ไลน์ทางการไทย</a></li>
-            <li><a href="{{ url('sticker/official/oversea/top') }}">สติ๊กเกอร์ไลน์ทางการต่างประเทศ</a></li>
+            <li><a href="{{ url('sticker/official/thai/top') }}">สติ๊กเกอร์ไลน์ไทย</a></li>
+            <li><a href="{{ url('sticker/official/oversea/top') }}">สติ๊กเกอร์ไลน์ต่างประเทศ</a></li>
             <li><a href="{{ url('sticker/creator/top') }}">สติ๊กเกอร์ไลน์ครีเอเตอร์</a></li>
             <li><a href="{{ url('theme/official/top') }}">ธีมไลน์ทางการ</a></li>
             <li><a href="{{ url('theme/creator/top') }}">ธีมไลน์ครีเอเตอร์</a></li>
