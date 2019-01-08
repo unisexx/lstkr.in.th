@@ -4,15 +4,18 @@
         <div class="input-group mb-3">
             <input type="text" class="form-control" placeholder="ค้นหา" name="q" value="{{ @$_GET['q'] }}">
             <div class="input-group-append">
-                <button class="btn btn-outline-secondary" type="submit" id="button-addon2" style="margin:0px;"><i class="icon-search"></i></button>
+                <button class="btn btn-outline-secondary btn-danger" type="submit" id="button-addon2" style="margin:0px;"><i class="fas fa-search"></i></button>
             </div>
         </div>
     </form>
 </div>
 
 <div class="fh5co-narrow-content">
-	<h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">สติ๊กเกอร์ไลน์</h2>
-	<div class="row animate-box d-flex flex-wrap justify-content-center" data-animate-effect="fadeInLeft">
+	<div class="d-flex justify-content-between align-items-baseline animate-box" data-animate-effect="fadeInLeft">
+		<h2 class="fh5co-heading">สติ๊กเกอร์ไลน์</h2>
+		<p class="text-right read-more-text"><a href="{{ url('search/sticker?q='.@$_GET['q']) }}">ดูทั้งหมด ></a></p>
+	</div>
+	<div class="row animate-box d-flex flex-wrap" data-animate-effect="fadeInLeft">
 		@foreach($sticker as $row)
 		<div class="work-item text-center">
 			<a href="{{ url('sticker/product/'.$row->sticker_code) }}">
@@ -26,8 +29,11 @@
 </div>
 
 <div class="fh5co-narrow-content">
-	<h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">ธีมไลน์</h2>
-	<div class="row animate-box d-flex flex-wrap justify-content-center" data-animate-effect="fadeInLeft">
+	<div class="d-flex justify-content-between align-items-baseline animate-box" data-animate-effect="fadeInLeft">
+		<h2 class="fh5co-heading">ธีมไลน์</h2>
+		<p class="text-right read-more-text"><a href="{{ url('search/theme?q='.@$_GET['q']) }}">ดูทั้งหมด ></a></p>
+	</div>
+	<div class="row animate-box d-flex flex-wrap" data-animate-effect="fadeInLeft">
 		@foreach($theme as $row)
 		<div class="work-item text-center">
 			<a href="{{ url('theme/product/'.$row->id) }}">
@@ -41,11 +47,14 @@
 </div>
 
 <div class="fh5co-narrow-content">
-	<h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">อิโมจิไลน์</h2>
-	<div class="row animate-box d-flex flex-wrap justify-content-center" data-animate-effect="fadeInLeft">
+	<div class="d-flex justify-content-between align-items-baseline animate-box" data-animate-effect="fadeInLeft">
+		<h2 class="fh5co-heading">อิโมจิไลน์</h2>
+		<p class="text-right read-more-text"><a href="{{ url('search/emoji?q='.@$_GET['q']) }}">ดูทั้งหมด ></a></p>
+	</div>
+	<div class="row animate-box d-flex flex-wrap" data-animate-effect="fadeInLeft">
 		@foreach($emoji as $row)
 		<div class="work-item text-center">
-			<a href="{{ url('emoji/product/'.$row->emoji_code) }}">
+			<a href="{{ url('emoji/product/'.$row->id) }}">
 				<img src="https://stickershop.line-scdn.net/sticonshop/v1/product/{{ $row->emoji_code }}/iphone/main.png" alt="สติ๊กเกอร์ไลน์ {{ $row->title }}" class="img-fluid">
 				<h3 class="fh5co-work-title">{{ $row->title }}</h3>
 				<p>{{ ucfirst($row->category) }}, {{ $row->price }} บาท</p>

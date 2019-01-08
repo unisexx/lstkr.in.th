@@ -27,6 +27,7 @@ Route::get('/', 'HomeController@index');
 Route::get('home', 'HomeController@index');
 Route::get('aboutus', 'HomeController@aboutus');
 Route::get('search', 'HomeController@search');
+Route::get('search/{param}', 'HomeController@search');
 Route::get('author/{param}', 'HomeController@author');
 Route::get('tag/{param}', 'HomeController@tag');
 

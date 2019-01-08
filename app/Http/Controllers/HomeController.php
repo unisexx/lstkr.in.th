@@ -123,34 +123,57 @@ class HomeController extends Controller
         return view('home',$data);
     }
 
-    public function search()
+    public function search($type = false)
     {
-        // ค้นหา sticker
-        $data['sticker'] = new Sticker;
-        if (!empty($_GET['q'])) {
-            $data['sticker'] = $data['sticker']
-                                ->where('title_th', 'like', $_GET['q'] . '%')
-                                ->orWhere('title_en', 'like', $_GET['q'] . '%');
-        }
-        $data['sticker'] = $data['sticker']->orderBy('id', 'desc')->take(12)->get();
+        if($type){
 
-        // ค้นหา theme
-        $data['theme'] = new Theme;
-        if (!empty($_GET['q'])) {
-            $data['theme'] = $data['theme']
-                                ->where('title', 'like', $_GET['q'] . '%');
-        }
-        $data['theme'] = $data['theme']->orderBy('id', 'desc')->take(12)->get();
+            $data['type'] = $type;
 
-        // ค้นหา emoji
-        $data['emoji'] = new Emoji;
-        if (!empty($_GET['q'])) {
-            $data['emoji'] = $data['emoji']
-                                ->where('title', 'like', $_GET['q'] . '%');
-        }
-        $data['emoji'] = $data['emoji']->orderBy('id', 'desc')->take(12)->get();
+            if (!empty($_GET['q'])) {
+                $data['search'] = DB::table($type.'s')->where(function($q) use ($type){
+                                        if($type == 'sticker'){
+                                            $q->where('title_th', 'like', $_GET['q'] . '%')
+                                            ->orWhere('title_en', 'like', $_GET['q'] . '%');
+                                        }else{
+                                            $q->where('title', 'like', $_GET['q'] . '%');
+                                        }
+                                    })
+                                    ->orderBy('id', 'desc')
+                                    ->simplePaginate(30);
+            }
+            
+            return view('home.search_type', $data);
+
+        }else{
+
+            // ค้นหา sticker
+            $data['sticker'] = new Sticker;
+            if (!empty($_GET['q'])) {
+                $data['sticker'] = $data['sticker']
+                                    ->where('title_th', 'like', $_GET['q'] . '%')
+                                    ->orWhere('title_en', 'like', $_GET['q'] . '%');
+            }
+            $data['sticker'] = $data['sticker']->orderBy('id', 'desc')->take(12)->get();
+
+            // ค้นหา theme
+            $data['theme'] = new Theme;
+            if (!empty($_GET['q'])) {
+                $data['theme'] = $data['theme']
+                                    ->where('title', 'like', $_GET['q'] . '%');
+            }
+            $data['theme'] = $data['theme']->orderBy('id', 'desc')->take(12)->get();
+
+            // ค้นหา emoji
+            $data['emoji'] = new Emoji;
+            if (!empty($_GET['q'])) {
+                $data['emoji'] = $data['emoji']
+                                    ->where('title', 'like', $_GET['q'] . '%');
+            }
+            $data['emoji'] = $data['emoji']->orderBy('id', 'desc')->take(12)->get();
 
             return view('home.search', $data);
+
+        }
     }
 
     public function author($user_id)
