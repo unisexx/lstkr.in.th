@@ -291,6 +291,138 @@ class CrawlerController extends Controller
     }
 
 
+    /**
+     * ดึงสติ๊กเกอร์ไลน์จากเว็บ yabe (ptype=1 ของ yabe คือหน้า sticker)
+     * $type 1 = creator, 2 = official
+     * $country global,tw,ja,id,in,th,kr,us,en,es,hk,ar,bs,my,vn,de,it,mx
+     * Page: หน้าที่จะเข้าไปดึงข้อมูล
+     */
+    public function getStickeryabe($type,$page = null,$country = false)
+    {
+
+        $typeArray = array('1'=>'creator','2'=>'official');
+        $countryArray = array('global'=>'global','tw'=>'taiwan','ja'=>'japan','id'=>'indonesia','in'=>'india','th'=>'thailand','kr'=>'korea','us'=>'us','en'=>'en');
+        $data['type'] = $typeArray[$type];
+        $data['country'] = @$countryArray[$country] ? $countryArray[$country] : 'global' ;
+
+        $crawler = Goutte::request('GET', 'http://yabeline.tw/Products.php?ptype=1&type='.$type.'&country='.$country.'&pageNum_Stickers_Data='.$page);
+
+        // foreach
+        $crawler->filter('.forSticker .item')->each(function ($node) use ($data) {
+
+            // หา url ของสติ๊กเกอร์
+            $url = $node->filter('a')->attr('href'); // output : Stickers_Data.php?Number=12831
+            
+            // เอาลิ้งค์ สติ๊กเกอร์ที่ได้มา หาค่า sticker_code
+            $sticker_code = explode("=",$url);
+            $sticker_code = $sticker_code[1];
+            // dump($sticker_code);
+
+            // นำ sticker_code มาค้นหาใส DB ว่ามีไหม ถ้ามีอยู่แล้วให้ข้ามไป
+            $rs = Sticker::select('id')->where('sticker_code',$sticker_code)->first();
+
+            // ถ้ายังไม่มีค่าใน DB
+            if (empty($rs->id)){
+
+                $crawler_page = Goutte::request('GET','http://yabeline.tw/Stickers_Data.php?Number='.$sticker_code);
+
+                // หา stamp_start & stamp_end
+                for ($i = 0; $i < 40; $i++) {
+                    if ($crawler_page->filter('.stickerSub > img')->eq($i)->count() != 0) {
+                        $imgTxt = $crawler_page->filter('.stickerSub > img')->eq($i)->attr('src');
+                        $image_path = explode("/", getUrlFromText($imgTxt));
+                        $stamp_code = $image_path[6];
+                        // dump($stamp_code);
+        
+                        $dataStamp[] = array(
+                            'stamp_code' => $stamp_code
+                        );
+                    }
+                }
+
+                // หาเวอร์ชั่นของสติ๊กเกอร์โดยวิเคราะห์จาก url ของรูปสติ๊กเกอร์
+                $image = trim($crawler_page->filter('.stickerSub > img')->attr('src'));
+                $image = explode("/", $image);
+                $version = str_replace('v','',$image[4]);
+
+
+                // ดึงข้อมูลสติ๊กเกอร์จาก meta ไฟล์
+                $ch = curl_init();
+                curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($ch, CURLOPT_URL,'http://dl.stickershop.line.naver.jp/products/0/0/'.$version.'/'.$sticker_code.'/LINEStorePC/productInfo.meta');
+                $result=curl_exec($ch);
+                curl_close($ch);
+                $productInfo = json_decode($result, true);
+
+                // dump($productInfo);
+
+                $title_th            = @$productInfo['title']['th'] ? $productInfo['title']['th'] : $productInfo['title']['en'];
+                $title_en            = $productInfo['title']['en'];
+                $author_th           = @$productInfo['author']['th'] ? $productInfo['author']['th'] : $productInfo['author']['en'];
+                $author_en           = $productInfo['author']['en'];
+                $onsale              = $productInfo['onSale'];
+                $hasanimation        = $productInfo['hasAnimation'];
+                $hassound            = $productInfo['hasSound'];
+                $validdays           = $productInfo['validDays'];
+                $stickerresourcetype = $productInfo['stickerResourceType'];
+                // $detail              = trim($crawler_page->filter('p.mdCMN08Desc')->text());
+                // $credit              = trim($crawler_page->filter('p.mdCMN09Copy')->text());
+                $sticker_code        = $sticker_code;
+                $created             = date("Y-m-d H:i:s");
+                $price               = intval($productInfo['price'][0]['price']);
+                $category            = $data['type'];
+                $country             = $data['country'];
+                $stamp_start         = reset($dataStamp)['stamp_code'];
+                $stamp_end           = end($dataStamp)['stamp_code'];
+
+                // dump($data['country']);
+                // dump($productInfo);
+                // dump($price);
+
+                // insert ลง db
+                DB::table('stickers')->insert(
+                    [
+                        'sticker_code'        => $sticker_code,
+                        'version'             => $version,
+                        'title_th'            => $title_th,
+                        'title_en'            => $title_en,
+                        // 'detail'              => $detail,
+                        'author_th'           => $author_th,
+                        'author_en'           => $author_en,
+                        // 'credit'              => $credit,
+                        'created'             => date("Y-m-d H:i:s"),
+                        'category'            => $category,
+                        'country'             => $country,
+                        'price'               => $price,
+                        'status'              => 'approve',
+                        'onsale'              => $onsale,
+                        'validdays'           => $validdays,
+                        'hasanimation'        => $hasanimation,
+                        'hassound'            => $hassound,
+                        'stickerresourcetype' => $stickerresourcetype,
+                        'stamp_start'         => $stamp_start,
+                        'stamp_end'           => $stamp_end
+                    ]
+                );
+
+                unset($data);
+                dump($title_th);
+
+            }// endif
+
+            // exit();
+        }); // endforeach
+
+        // ดำเนินการเสร็จทั้งหมดแล้ว ให้ redirect ถ้า $page ยังไม่ถึงหน้าแรก
+        if(isset($page) && $page != 1){
+            $page = $page - 1;
+            $page_redirect = url('crawler/stickeryabe/'.$type.'/'.$page);
+            echo "<script>setTimeout(function(){ window.location.href = '".$page_redirect."'; }, 1000);</script>";
+        }
+    }
+
+
     // public function getUpdateauthor()
     // {
     //     Sticker::select('id','author')->whereNotNull('author')->whereNull('author_th')->where('status','<>','draft')->orderBy('id', 'desc')->chunk(5, function ($sticker) {
@@ -328,6 +460,13 @@ class CrawlerController extends Controller
     //     });
     // }
 
+
+    /** 
+     * cronjob 
+     * ใช้อัพเดท sticker stamp 
+     * ถ้าใน database stamp_start & stamp_code เป็น 0 แสดงว่า สติกเกอร์นี้ไม่มีในเว็บ yabe 
+     * ให้ลองหา stamp ในเว็บ store.line.me ต่อไป
+     * */
     public function getUpdatestamp()
     {
         Sticker::select('id','sticker_code')->whereNull('stamp_start')->whereNull('stamp_end')->where('status','<>','draft')->orderBy('id', 'asc')->chunk(20, function ($sticker) {
@@ -349,8 +488,8 @@ class CrawlerController extends Controller
                 }
 
                 $row->update([
-                    'stamp_start' => reset($data)['stamp_code'],
-                    'stamp_end' => end($data)['stamp_code']
+                    'stamp_start' => @reset($data)['stamp_code'] ? reset($data)['stamp_code'] : 0,
+                    'stamp_end' => @end($data)['stamp_code'] ? end($data)['stamp_code'] : 0
                 ]);
 
                 unset ($data);
