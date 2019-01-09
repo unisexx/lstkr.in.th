@@ -499,4 +499,9 @@ class CrawlerController extends Controller
         });
         
     }
+
+    public function getTest(){
+        $crawler = Goutte::request('GET', 'https://yabeline.tw/Homepage.php');
+        print_r($crawler);
+    }
 }
