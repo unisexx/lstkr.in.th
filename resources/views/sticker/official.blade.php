@@ -13,6 +13,7 @@
 	<div class="animate-box d-flex flex-wrap" data-animate-effect="fadeInLeft">
 		@foreach($sticker as $row)
 		<div class="work-item text-center">
+			{!! new_icon($row->created) !!}
 			<a href="{{ url('sticker/product/'.$row->sticker_code) }}">
 				<img src="https://sdl-stickershop.line.naver.jp/products/0/0/{{ $row->version }}/{{ $row->sticker_code }}/android/main.png" alt="สติ๊กเกอร์ไลน์ {{ $row->title_th }}" class="img-fluid">
 				<h3 class="fh5co-work-title">{{ $row->title_th }}</h3>

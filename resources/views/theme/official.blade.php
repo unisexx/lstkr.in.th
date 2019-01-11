@@ -13,6 +13,7 @@
 	<div class="animate-box d-flex flex-wrap" data-animate-effect="fadeInLeft">
 		@foreach($theme as $row)
 		<div class="work-item text-center">
+			{!! new_icon($row->created) !!}
 			<a href="{{ url('theme/product/'.$row->id) }}">
 				<img src="https://shop.line-scdn.net/themeshop/v1/products/li/st/kr/{{ $row->theme_code }}/1/WEBSTORE/icon_198x278.png" alt="ธีมไลน์ {{ $row->title }}" class="img-fluid">
 				<h3 class="fh5co-work-title">{{ $row->title }}</h3>
