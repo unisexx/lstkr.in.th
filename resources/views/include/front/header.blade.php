@@ -7,9 +7,11 @@
             <li><a href="{{ url('sticker/official/thai/top') }}">สติ๊กเกอร์ไลน์ไทย</a></li>
             <li><a href="{{ url('sticker/official/oversea/top') }}">สติ๊กเกอร์ไลน์ต่างประเทศ</a></li>
             <li><a href="{{ url('sticker/creator/top') }}">สติ๊กเกอร์ไลน์ครีเอเตอร์</a></li>
-            <li><a href="{{ url('theme/official/top') }}">ธีมไลน์ทางการ</a></li>
+            <li><a href="{{ url('theme/official/thai/top') }}">ธีมไลน์ทางการไทย</a></li>
+            <li><a href="{{ url('theme/official/oversea/top') }}">ธีมไลน์ทางการต่างประเทศ</a></li>
             <li><a href="{{ url('theme/creator/top') }}">ธีมไลน์ครีเอเตอร์</a></li>
-            <li><a href="{{ url('emoji/official/top') }}">อิโมจิทางการ</a></li>
+            <li><a href="{{ url('emoji/official/thai/top') }}">อิโมจิทางการไทย</a></li>
+            <li><a href="{{ url('emoji/official/oversea/top') }}">อิโมจิทางการต่างประเทศ</a></li>
             <li><a href="{{ url('emoji/creator/top') }}">อิโมจิครีเอเตอร์</a></li>
             <li><a href="{{ url('aboutus') }}">เกี่ยวกับเรา</a></li>
             <li><a href="{{ url('search') }}">ค้นหา</a></li>

@@ -19,7 +19,7 @@ class ThemeController extends Controller {
 		
 	}
 	
-	public function getOfficial($type)
+	public function getOfficial($country,$type)
 	{
 		// SEO
 		SEO::setTitle('สติ๊กเกอร์ไลน์ยอดนิยม');
@@ -33,8 +33,18 @@ class ThemeController extends Controller {
 
 		$data['theme'] = new Theme;
 		$data['theme'] = $data['theme']
-							->where('category','official')
 							->where('status','approve')
+							->where('category','official')
+							->where(function($q) use ($country){
+
+								// ประเทศ : thai, oversea
+								if($country == 'thai'){
+									$q->where('country','global')->orWhere('country','thai');
+								}elseif($country == 'oversea'){
+									$q->where('country','!=','global')->where('country','!=','thai');
+								}
+								
+							})
 							->orderBy($orderByField, 'desc')
 							->simplePaginate(30);
 		return view('theme.official', $data);

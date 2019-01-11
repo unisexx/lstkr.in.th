@@ -75,7 +75,7 @@ class HomeController extends Controller
                             ->take(12)
                             ->get();
 
-        // สติ๊กเกอร์ไลน์ทางการ
+        // สติ๊กเกอร์ไลน์ครีเอเตอร์
         $data['sticker_creator'] = new Sticker;
         $data['sticker_creator'] = $data['sticker_creator']
                             ->where('category','creator')
@@ -84,11 +84,27 @@ class HomeController extends Controller
                             ->take(12)
                             ->get();
 
-        // ธีมไลน์ทางการ
-        $data['theme_official'] = new Theme;
-        $data['theme_official'] = $data['theme_official']
+
+        // ธีมไลน์ทางการ (ไทย)
+        $data['theme_official_thai'] = new Theme;
+        $data['theme_official_thai'] = $data['theme_official_thai']
                             ->where('category','official')
                             ->where('status','approve')
+                            ->where(function($q){
+                                $q->where('country','global')->orWhere('country','thai');
+                            })
+                            ->orderBy('id', 'desc')
+                            ->take(12)
+                            ->get();
+
+        // ธีมไลน์ทางการ (ต่างประเทศ)
+        $data['theme_official_oversea'] = new Theme;
+        $data['theme_official_oversea'] = $data['theme_official_oversea']
+                            ->where('category','official')
+                            ->where('status','approve')
+                            ->where(function($q){
+                                $q->where('country','!=','global')->where('country','!=','thai');
+                            })
                             ->orderBy('id', 'desc')
                             ->take(12)
                             ->get();
@@ -102,11 +118,26 @@ class HomeController extends Controller
                             ->take(12)
                             ->get();
 
-        // อิโมจิทางการ
-        $data['emoji_official'] = new Emoji;
-        $data['emoji_official'] = $data['emoji_official']
+        // อิโมจิทางการ (ไทย)
+        $data['emoji_official_thai'] = new Emoji;
+        $data['emoji_official_thai'] = $data['emoji_official_thai']
                             ->where('category','official')
                             ->where('status','approve')
+                            ->where(function($q){
+                                $q->where('country','global')->orWhere('country','thai');
+                            })
+                            ->orderBy('id', 'desc')
+                            ->take(12)
+                            ->get();
+
+        // อิโมจิทางการ (ต่างประเทศ)
+        $data['emoji_official_oversea'] = new Emoji;
+        $data['emoji_official_oversea'] = $data['emoji_official_oversea']
+                            ->where('category','official')
+                            ->where('status','approve')
+                            ->where(function($q){
+                                $q->where('country','!=','global')->where('country','!=','thai');
+                            })
                             ->orderBy('id', 'desc')
                             ->take(12)
                             ->get();

@@ -3,11 +3,11 @@
 @section('content')
 
 <div class="fh5co-narrow-content">
-	<h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">อิโมจิไลน์ทางการ</h2>
+	<h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">อิโมจิไลน์ทางการ{{ Request::segment(3) == 'thai' ? 'ไทย' : 'ต่างประเทศ' }}</h2>
 
-	<select class="custom-select col-md-2 animate-box" data-animate-effect="fadeInLeft" onchange="location = '{{ Request::root() }}/emoji/official/'+this.value;">
-		<option value="top" {{ Request::segment(3) == 'top' ? 'selected' : '' }}>ฮิต</option>
-		<option value="new" {{ Request::segment(3) == 'new' ? 'selected' : '' }}>ใหม่ล่าสุด</option>
+	<select class="custom-select col-md-2 animate-box" data-animate-effect="fadeInLeft" onchange="location = '{{ Request::root() }}/emoji/official/{{ Request::segment(3) }}/'+this.value;">
+		<option value="top" {{ Request::segment(4) == 'top' ? 'selected' : '' }}>ฮิต</option>
+		<option value="new" {{ Request::segment(4) == 'new' ? 'selected' : '' }}>ใหม่ล่าสุด</option>
 	</select>
 
 	<div class="animate-box d-flex flex-wrap" data-animate-effect="fadeInLeft">
