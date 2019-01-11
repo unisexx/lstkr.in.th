@@ -1,10 +1,10 @@
-@font-face {
+/* @font-face {
   font-family: 'icomoon';
   src: url("../fonts/icomoon/icomoon.eot?srf3rx");
   src: url("../fonts/icomoon/icomoon.eot?srf3rx#iefix") format("embedded-opentype"), url("../fonts/icomoon/icomoon.ttf?srf3rx") format("truetype"), url("../fonts/icomoon/icomoon.woff?srf3rx") format("woff"), url("../fonts/icomoon/icomoon.svg?srf3rx#icomoon") format("svg");
   font-weight: normal;
   font-style: normal;
-}
+} */
 
 /* =======================================================
 *
@@ -315,6 +315,7 @@ body.offcanvas .fh5co-nav-toggle {
   margin-bottom: 30px;
   padding: 5px;
   flex: 0 0 auto;
+  position: relative;
 }
 
 .work-item a {
@@ -1365,6 +1366,18 @@ body.offcanvas .fh5co-nav-toggle {
   margin: 10px 0 0;
 }
 
+.new-product {
+  width: 31px;
+  height: 31px;
+  background-image: url(../../image/ico_map.png);
+  background-position: -476px 219px;
+  position: absolute;
+  z-index: 9;
+  top: 10px;
+  left: 10px;
+  overflow: hidden;
+  text-indent: -9999px;
+}
 
 /* Desktops and laptops ----------- */
 @media only screen and (min-width : 1224px) {

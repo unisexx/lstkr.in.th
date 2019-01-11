@@ -85,3 +85,14 @@ if(!function_exists('get_sticker_img_url'))
 		return $imgUrl;
 	}
 }
+
+if(!function_exists('new_icon'))
+{
+	function new_icon($created){
+		$end = Carbon::parse($created);
+		$now = Carbon::now();
+		$length = $end->diffInDays($now);
+		$new_icon = $length < 7 ? '<div class="new-product">New</div>' : '';
+		return $new_icon;
+	}
+}
