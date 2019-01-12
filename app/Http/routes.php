@@ -28,6 +28,8 @@ Route::get('home', 'HomeController@index');
 Route::get('aboutus', 'HomeController@aboutus');
 Route::get('search', 'HomeController@search');
 Route::get('search/{param}', 'HomeController@search');
+Route::get('new_arrival', 'HomeController@new_arrival');
+Route::get('new_arrival/{param}', 'HomeController@new_arrival');
 Route::get('author/{param}', 'HomeController@author');
 Route::get('tag/{param}', 'HomeController@tag');
 

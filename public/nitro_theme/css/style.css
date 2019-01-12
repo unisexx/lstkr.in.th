@@ -1460,6 +1460,19 @@ body.offcanvas .fh5co-nav-toggle {
     font-size: 30px;
     margin-bottom: 15px;
   }
+
+  .new-product {
+    width: 18px;
+    height: 18px;
+    background-image: url(../../image/ico_map.png);
+    background-position: -358px 193px;
+    position: absolute;
+    z-index: 9;
+    top: 10px;
+    left: 10px;
+    overflow: hidden;
+    text-indent: -9999px
+  }
 }
 
 /* ขนาดจอ laptop ----------- */

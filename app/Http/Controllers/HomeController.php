@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Sticker;
 use App\Models\Theme;
 use App\Models\Emoji;
+use App\Models\NewArrival;
 
 use DB;
 use SEO;
@@ -20,10 +21,11 @@ class HomeController extends Controller
      *
      * @return void
      */
-    // public function __construct()
-    // {
+    public function __construct()
+    {
         // $this->middleware('auth');
-    // }
+        // DB::enableQueryLog();
+    }
 
     /**
      * Show the application dashboard.
@@ -40,7 +42,6 @@ class HomeController extends Controller
         SEOMeta::setKeywords('line, sticker, theme, creator, animation, sound, popup, ไลน์, สติ๊กเกอร์, ธีม, ครีเอเทอร์, ดุ๊กดิ๊ก, มีเสียง, ป๊อปอัพ');
         SEOMeta::addKeyword('line, sticker, theme, creator, animation, sound, popup, ไลน์, สติ๊กเกอร์, ธีม, ครีเอเทอร์, ดุ๊กดิ๊ก, มีเสียง, ป๊อปอัพ');
 
-        // DB::enableQueryLog();
         // สติ๊กเกอร์ไลน์โปรโมท
         $data['sticker_promote'] = DB::table('promotes')
             ->join('stickers', 'promotes.product_code', '=', 'stickers.sticker_code')
@@ -49,7 +50,6 @@ class HomeController extends Controller
             ->inRandomOrder()
             ->take(30)
             ->get();
-        // dump(DB::getQueryLog());
 
         // สติ๊กเกอร์ไลน์ทางการ (ไทย)
         $data['sticker_official_thai'] = new Sticker;
@@ -59,7 +59,7 @@ class HomeController extends Controller
                             ->where(function($q){
                                 $q->where('country','global')->orWhere('country','thai');
                             })
-                            ->orderBy('id', 'desc')
+                            ->orderBy('threedays', 'desc')
                             ->take(12)
                             ->get();
 
@@ -71,7 +71,7 @@ class HomeController extends Controller
                             ->where(function($q){
                                 $q->where('country','!=','global')->where('country','!=','thai');
                             })
-                            ->orderBy('id', 'desc')
+                            ->orderBy('threedays', 'desc')
                             ->take(12)
                             ->get();
 
@@ -80,7 +80,7 @@ class HomeController extends Controller
         $data['sticker_creator'] = $data['sticker_creator']
                             ->where('category','creator')
                             ->where('status','approve')
-                            ->orderBy('id', 'desc')
+                            ->orderBy('threedays', 'desc')
                             ->take(12)
                             ->get();
 
@@ -93,7 +93,7 @@ class HomeController extends Controller
                             ->where(function($q){
                                 $q->where('country','global')->orWhere('country','thai');
                             })
-                            ->orderBy('id', 'desc')
+                            ->orderBy('threedays', 'desc')
                             ->take(12)
                             ->get();
 
@@ -105,7 +105,7 @@ class HomeController extends Controller
                             ->where(function($q){
                                 $q->where('country','!=','global')->where('country','!=','thai');
                             })
-                            ->orderBy('id', 'desc')
+                            ->orderBy('threedays', 'desc')
                             ->take(12)
                             ->get();
 
@@ -114,7 +114,7 @@ class HomeController extends Controller
         $data['theme_creator'] = $data['theme_creator']
                             ->where('category','creator')
                             ->where('status','approve')
-                            ->orderBy('id', 'desc')
+                            ->orderBy('threedays', 'desc')
                             ->take(12)
                             ->get();
 
@@ -126,7 +126,7 @@ class HomeController extends Controller
                             ->where(function($q){
                                 $q->where('country','global')->orWhere('country','thai');
                             })
-                            ->orderBy('id', 'desc')
+                            ->orderBy('threedays', 'desc')
                             ->take(12)
                             ->get();
 
@@ -138,7 +138,7 @@ class HomeController extends Controller
                             ->where(function($q){
                                 $q->where('country','!=','global')->where('country','!=','thai');
                             })
-                            ->orderBy('id', 'desc')
+                            ->orderBy('threedays', 'desc')
                             ->take(12)
                             ->get();
 
@@ -147,7 +147,7 @@ class HomeController extends Controller
         $data['emoji_creator'] = $data['emoji_creator']
                             ->where('category','creator')
                             ->where('status','approve')
-                            ->orderBy('id', 'desc')
+                            ->orderBy('threedays', 'desc')
                             ->take(12)
                             ->get();
 
@@ -207,27 +207,66 @@ class HomeController extends Controller
         }
     }
 
-    public function author($user_id)
-    {
-        $data['sticker'] = new Sticker;
-        $data['sticker'] = $data['sticker']->where('user_id', $user_id)->orderBy('updated_at', 'desc')->get();
+    // public function author($user_id)
+    // {
+    //     $data['sticker'] = new Sticker;
+    //     $data['sticker'] = $data['sticker']->where('user_id', $user_id)->orderBy('updated_at', 'desc')->get();
 
-        $data['theme'] = new Theme;
-        $data['theme'] = $data['theme']->where('user_id', $user_id)->orderBy('updated_at', 'desc')->get();
+    //     $data['theme'] = new Theme;
+    //     $data['theme'] = $data['theme']->where('user_id', $user_id)->orderBy('updated_at', 'desc')->get();
 
-        return view('home.author', $data);
-    }
+    //     return view('home.author', $data);
+    // }
 
-    public function tag($tag)
-    {
-        $data['tag'] = $tag;
-        $data['stamp'] = new Stamp;
-        if (!empty($tag)) {
-            $data['stamp'] = $data['stamp']->where('tag', 'like', '%' . $tag . '%');
-        }
-        $data['stamp'] = $data['stamp']->orderBy('updated_at', 'desc')->get();
+    // public function tag($tag)
+    // {
+    //     $data['tag'] = $tag;
+    //     $data['stamp'] = new Stamp;
+    //     if (!empty($tag)) {
+    //         $data['stamp'] = $data['stamp']->where('tag', 'like', '%' . $tag . '%');
+    //     }
+    //     $data['stamp'] = $data['stamp']->orderBy('updated_at', 'desc')->get();
 
-        return view('home.tag', $data);
+    //     return view('home.tag', $data);
+    // }
+
+    public function new_arrival($id=false){
+        $data['new_arrival'] = NewArrival::orderBy('id', 'desc')->first();
+        $data['product'] = DB::select("SELECT
+                                    new_arrival_products.*,
+                                    stickers.sticker_code,
+                                    stickers.category sticker_category,
+                                    stickers.country sticker_country,
+                                    stickers.title_th sticker_title_th,
+                                    stickers.price sticker_price,
+                                    stickers.version,
+                                    stickers.onsale,
+                                    stickers.validdays,
+                                    stickers.hasanimation,
+                                    stickers.hassound,
+                                    stickers.stickerresourcetype,
+                                    stickers.created sticker_created,
+                                    themes.id theme_id,
+                                    themes.theme_code,
+                                    themes.category theme_category,
+                                    themes.country theme_country,
+                                    themes.title theme_title,
+                                    themes.price theme_price,
+                                    themes.created theme_created,
+                                    emojis.id emoji_id,
+                                    emojis.emoji_code,
+                                    emojis.category emoji_category,
+                                    emojis.country emoji_country,
+                                    emojis.title emoji_title,
+                                    emojis.price emoji_price,
+                                    emojis.created emoji_created
+                                FROM
+                                    new_arrival_products
+                                LEFT JOIN stickers ON new_arrival_products.product_code = stickers.sticker_code
+                                LEFT JOIN themes ON new_arrival_products.product_code = themes.theme_code
+                                LEFT JOIN emojis ON new_arrival_products.product_code = emojis.emoji_code
+                                WHERE new_arrival_products.new_arrival_id = ".$data['new_arrival']->id);
+        return view('home.new_arrival',$data);
     }
 
     public function aboutus()
