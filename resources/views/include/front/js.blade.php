@@ -33,5 +33,16 @@ $('ducument').ready(function(){
             data:{ productType : productType, productID : productID }
         });
     }
+
+    // เปิด sticker stamp animation ตอนคลิก
+    $('.sticker-stamp').click(function(){
+		$(this).attr("src", $(this).data('animation'));
+        $(this).siblings().css( "opacity", "0.2" ).delay(3000)
+        .queue(function (next) { 
+            $(this).css("opacity", "1"); 
+            next(); 
+        });
+
+    });
 });
 </script>

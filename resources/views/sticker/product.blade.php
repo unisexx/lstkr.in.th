@@ -14,7 +14,7 @@
 			<h3>{{ $rs->title_th }}</h3>
 			<ul>
 				<li>ราคา : {{ convert_line_coin_2_money($rs->price) }} บาท</li>
-				<li>ประเภท : {{ $rs->category }}</li>
+				<li>ประเภท : {{ $rs->category }}, {{ $rs->stickerresourcetype }}</li>
 				<li>ประเทศ : {{ $rs->country }}</li>
 			</ul>
 		</div>
@@ -33,7 +33,17 @@
 	@if($rs->detail) <p class="sticker-detail animate-box" data-animate-effect="fadeInLeft">{{ $rs->detail }}</p> @endif
 
 	<div class="animate-box" data-animate-effect="fadeInLeft">
-		<img class="img-fluid" src="https://sdl-stickershop.line.naver.jp/products/0/0/{{ $rs->version }}/{{ $rs->sticker_code }}/LINEStorePC/preview.png" alt="สติ๊กเกอร์ไลน์ {{ $rs->title_th }}">
+		@if($rs->stamp_start === null)
+
+			<img class="img-fluid" src="https://sdl-stickershop.line.naver.jp/products/0/0/{{ $rs->version }}/{{ $rs->sticker_code }}/LINEStorePC/preview.png" alt="สติ๊กเกอร์ไลน์ {{ $rs->title_th }}">
+
+		@else
+
+			@for($x = $rs->stamp_start; $x <= $rs->stamp_end; $x++)
+				<img class="sticker-stamp" src="https://stickershop.line-scdn.net/stickershop/v{{ $rs->version }}/sticker/{{ $x }}/android/sticker.png;compress=true" data-animation="https://stickershop.line-scdn.net/stickershop/v{{ $rs->version }}/sticker/{{ $x }}/IOS/sticker_animation@2x.png;compress=true">
+			@endfor
+
+		@endif
 	</div>
 
 	<!-- Social Share -->
@@ -55,4 +65,5 @@
 	<!-- Social Share -->
 		
 </div>
+
 @endsection
