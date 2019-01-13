@@ -7,14 +7,18 @@
 	<div class="d-flex animate-box" data-animate-effect="fadeInLeft">
 
 		<div class="sticker-image-cover">
-			<img class="img-fluid" src="{{ get_sticker_img_url($rs->stickerresourcetype,$rs->version,$rs->sticker_code) }}" alt="สติ๊กเกอร์ไลน์ {{ $rs->title_th }}" onclick="this.src = this.src">
+			<img class="img-fluid playAnimate" src="{{ get_sticker_img_url($rs->stickerresourcetype,$rs->version,$rs->sticker_code) }}" alt="สติ๊กเกอร์ไลน์ {{ $rs->title_th }}" data-animation="{{ get_sticker_img_url($rs->stickerresourcetype,$rs->version,$rs->sticker_code) }}">
+			<audio preload="metadata">
+				<source src="https://sdl-stickershop.line.naver.jp/stickershop/v{{ $rs->version }}/product/{{ $rs->sticker_code }}/IOS/main_sound.m4a" type="audio/mpeg">
+			</audio>
+			{!! getStickerResourctTypeIcon($rs->stickerresourcetype) !!}
 		</div>
 
 		<div class="sticker-infomation">
 			<h3>{{ $rs->title_th }}</h3>
 			<ul>
 				<li>ราคา : {{ convert_line_coin_2_money($rs->price) }} บาท</li>
-				<li>ประเภท : {{ $rs->category }}, {{ $rs->stickerresourcetype }}</li>
+				<li>ประเภท : {{ $rs->category }}</li>
 				<li>ประเทศ : {{ $rs->country }}</li>
 			</ul>
 		</div>
@@ -40,7 +44,20 @@
 		@else
 
 			@for($x = $rs->stamp_start; $x <= $rs->stamp_end; $x++)
-				<img class="sticker-stamp" src="https://stickershop.line-scdn.net/stickershop/v{{ $rs->version }}/sticker/{{ $x }}/android/sticker.png;compress=true" data-animation="https://stickershop.line-scdn.net/stickershop/v{{ $rs->version }}/sticker/{{ $x }}/IOS/sticker_animation@2x.png;compress=true">
+			@php
+				if($rs->stickerresourcetype == 'SOUND' || $rs->stickerresourcetype == 'STATIC'){
+					$data_animation = "https://stickershop.line-scdn.net/stickershop/v".$rs->version."/sticker/".$x."/android/sticker.png;compress=true";
+				}elseif($rs->stickerresourcetype == 'POPUP' || $rs->stickerresourcetype == 'POPUP_SOUND'){
+					$data_animation = "https://stickershop.line-scdn.net/stickershop/v".$rs->version."/sticker/".$x."/IOS/sticker_popup.png;compress=true";
+				}
+				else{
+					$data_animation = "https://stickershop.line-scdn.net/stickershop/v".$rs->version."/sticker/".$x."/IOS/sticker_animation@2x.png;compress=true";
+				}
+			@endphp
+				<img class="sticker-stamp playAnimate" src="https://stickershop.line-scdn.net/stickershop/v{{ $rs->version }}/sticker/{{ $x }}/android/sticker.png;compress=true" data-animation="{{ $data_animation }}">
+				<audio preload="metadata">
+					<source src="https://sdl-stickershop.line.naver.jp/products/0/0/{{ $rs->version }}/{{ $rs->sticker_code }}/android/sound/{{ $x }}.m4a" type="audio/mpeg">
+				</audio>
 			@endfor
 
 		@endif

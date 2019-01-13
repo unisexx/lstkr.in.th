@@ -77,7 +77,7 @@ if(!function_exists('get_sticker_img_url'))
 		if($stickerresourcetype == 'ANIMATION' || $stickerresourcetype == 'ANIMATION_SOUND'){
 			$imgUrl = 'https://stickershop.line-scdn.net/stickershop/v'.$version.'/product/'.$sticker_code.'/IOS/main_animation@2x.png';
 		}elseif($stickerresourcetype == 'POPUP' || $stickerresourcetype == 'POPUP_SOUND'){
-			$imgUrl = 'https://sdl-stickershop.line.naver.jp/stickershop/v'.$version.'/product/'.$sticker_code.'/IOS/main_popup@2x.png';
+			$imgUrl = 'https://sdl-stickershop.line.naver.jp/stickershop/v'.$version.'/product/'.$sticker_code.'/IOS/main_popup.png';
 		}else{
 			$imgUrl = 'https://sdl-stickershop.line.naver.jp/products/0/0/'.$version.'/'.$sticker_code.'/LINEStorePC/main.png';
 		}
@@ -94,5 +94,23 @@ if(!function_exists('new_icon'))
 		$length = $end->diffInDays($now);
 		$new_icon = $length < 7 ? '<div class="new-product">New</div>' : '';
 		return $new_icon;
+	}
+}
+
+if(!function_exists('getStickerResourctTypeIcon'))
+{
+	function getStickerResourctTypeIcon($resourceType=false){
+		if($resourceType == "ANIMATION"){
+			return "<div class='iconProperty iconAnimation positionBottomRight icon-size-20'>ดุ๊กดิ๊ก</div>";
+		}elseif($resourceType == "SOUND"){
+			return "<div class='iconProperty iconSound positionBottomRight icon-size-20'>มีเสียง</div>";
+		}elseif($resourceType == "ANIMATION_SOUND"){
+			return "<div class='iconProperty iconAnimationSound positionBottomRight icon-size-20'>ดุ๊กดิ๊กและมีเสียง</div>";
+		}elseif($resourceType == "POPUP"){
+			return "<div class='iconProperty iconPopup positionBottomRight icon-size-20'>ป๊อปอัพ</div>";
+		}elseif($resourceType == "POPUP_SOUND"){
+			return "<div class='iconProperty iconPopupSound positionBottomRight icon-size-20'>ป๊อปอัพและมีเสียง</div>";
+		}elseif($resourceType == "STATIC"){
+		}
 	}
 }

@@ -35,14 +35,25 @@ $('ducument').ready(function(){
     }
 
     // เปิด sticker stamp animation ตอนคลิก
-    $('.sticker-stamp').click(function(){
-		$(this).attr("src", $(this).data('animation'));
-        $(this).siblings().css( "opacity", "0.2" ).delay(3000)
-        .queue(function (next) { 
-            $(this).css("opacity", "1"); 
-            next(); 
-        });
+    $('.playAnimate').click(function(){
+        // หยุดเสียงทั้งหมด
+        $('audio').each(function(){
+            this.pause(); // Stop playing
+            this.currentTime = 0; // Reset time
+        }); 
 
+        // เล่นเสียง
+        var audio = $(this).next('audio')[0];
+        audio.play();
+
+        // เล่น sticker animation
+		$(this).attr("src", $(this).data('animation'));
+        
+        // $(this).css( "opacity", "1" ).siblings().css( "opacity", "0.2" ).delay(3000)
+        // .queue(function (next) { 
+        //     $('.playAnimate').css("opacity", "1"); 
+        //     next(); 
+        // });
     });
 });
 </script>
