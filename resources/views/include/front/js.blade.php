@@ -34,6 +34,15 @@ $('ducument').ready(function(){
         });
     }
 
+    if(productType == 'sticker' && ($('.sticker-stamp').length == 0)){
+
+        // alert('get_stamp');
+        $.ajax({
+            url: '{{ url("ajax/updatestamp") }}',
+            data:{ sticker_code : productID }
+        });
+    }
+
     // เปิด sticker stamp animation ตอนคลิก
     $('.playAnimate').click(function(){
         // หยุดเสียงทั้งหมด

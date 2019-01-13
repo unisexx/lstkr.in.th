@@ -11,6 +11,7 @@ use App\Models\StickerView;
 
 use DB;
 use Session;
+use Goutte;
 
 class AjaxController extends Controller
 {
@@ -57,5 +58,36 @@ class AjaxController extends Controller
 
         }
 
-	}
+    }
+    
+    public function getUpdatestamp()
+	{
+
+        if(is_numeric($_GET['sticker_code'])){
+            
+            $crawler = Goutte::request('GET','https://store.line.me/stickershop/product/'.$_GET['sticker_code'].'/th');
+                
+                // หา stamp_start & stamp_end
+                for ($i = 0; $i < 40; $i++) {
+                    // check node empty
+                    if ($crawler->filter('.mdCMN09Image')->eq($i)->count() != 0) {
+                        $imgTxt = $crawler->filter('.mdCMN09Image')->eq($i)->attr('style');
+                        $image_path = explode("/", getUrlFromText($imgTxt));
+                        $stamp_code = $image_path[6];
+                        // dump($stamp_code);
+
+                        $data[] = array(
+                            'stamp_code' => $stamp_code,
+                        );
+                    }
+                }
+
+                if ($crawler->filter('.mdCMN09Image')->eq(0)->count() != 0) {
+                    DB::statement("UPDATE stickers SET updated_at = '".date("Y-m-d H:i:s")."', stamp_start = ".@reset($data)['stamp_code'].", stamp_end = ".@end($data)['stamp_code']." where sticker_code = " . $_GET['sticker_code']);
+                }
+
+                unset ($data);
+        }
+
+    }
 }
