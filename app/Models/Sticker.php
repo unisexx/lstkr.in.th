@@ -8,7 +8,28 @@ class Sticker extends Model
 {
     // use SoftDeletes;
 
-    protected $fillable = array('sticker_code', 'name', 'description', 'price', 'head_credit', 'foot_credit', 'user_id', 'status', 'version', 'hasanimation', 'hassound', 'stickerresourcetype', 'slug', 'author_th', 'author_en','stamp_start','stamp_end');
+    protected $fillable = array(
+        'sticker_code',
+        'category',
+        'country',
+        'title_th',
+        'title_en',
+        'author_th',
+        'author_en',
+        'detail',
+        'credit',
+        'price',
+        'version',
+        'onsale',
+        'validdays',
+        'hasanimation',
+        'hassound',
+        'stickerresourcetype',
+        'status',
+        'threedays',
+        'stamp_start',
+        'stamp_end',
+    );
     
     // protected $dates = ['deleted_at'];
 

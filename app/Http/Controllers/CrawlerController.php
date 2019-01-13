@@ -476,7 +476,7 @@ class CrawlerController extends Controller
                     ->whereNull('stamp_start')
                     ->whereNull('stamp_end')
                     ->where('status','<>','draft')
-                    ->orderBy('id', 'asc')
+                    ->orderBy('id', 'desc')
                     ->chunk(100, function ($sticker) {
                         
             foreach ($sticker as $row) {
@@ -498,10 +498,14 @@ class CrawlerController extends Controller
                     }
                 }
 
-                $row->update([
-                    'stamp_start' => @reset($data)['stamp_code'] ? reset($data)['stamp_code'] : 0,
-                    'stamp_end' => @end($data)['stamp_code'] ? end($data)['stamp_code'] : 0
-                ]);
+                if ($crawler->filter('.mdCMN09Image')->eq(0)->count() != 0) {
+                    $row->update([
+                        'detail'=>trim($crawler->filter('p.mdCMN08Desc')->text()),
+                        'credit'=>trim($crawler->filter('p.mdCMN09Copy')->text()),
+                        'stamp_start' => @reset($data)['stamp_code'] ? reset($data)['stamp_code'] : 0,
+                        'stamp_end' => @end($data)['stamp_code'] ? end($data)['stamp_code'] : 0
+                    ]);
+                }
 
                 unset ($data);
             }
