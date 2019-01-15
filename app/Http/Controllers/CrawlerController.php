@@ -472,7 +472,7 @@ class CrawlerController extends Controller
         Sticker::select('id','sticker_code')
                     ->where('status','approve')
                     ->where('category','official')
-                    ->where('country','japan')
+                    ->where('country','taiwan')
                     ->whereNull('stamp_start')
                     ->whereNull('stamp_end')
                     ->where('status','<>','draft')
