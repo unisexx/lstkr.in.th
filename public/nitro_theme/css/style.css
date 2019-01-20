@@ -505,7 +505,7 @@ body.offcanvas .fh5co-nav-toggle {
   -moz-flex-wrap: wrap;
 }
 
-.fh5co-cards .fh5co-flex-wrap > div {
+.fh5co-cards .fh5co-flex-wrap>div {
   width: 49.5%;
   margin-right: 1%;
   background: #fff;
@@ -513,17 +513,17 @@ body.offcanvas .fh5co-nav-toggle {
   margin-bottom: 10px;
 }
 
-.fh5co-cards .fh5co-flex-wrap > div:nth-of-type(1) {
+.fh5co-cards .fh5co-flex-wrap>div:nth-of-type(1) {
   float: left;
 }
 
-.fh5co-cards .fh5co-flex-wrap > div:nth-of-type(2) {
+.fh5co-cards .fh5co-flex-wrap>div:nth-of-type(2) {
   float: right;
   margin-right: 0%;
 }
 
 @media screen and (max-width: 992px) {
-  .fh5co-cards .fh5co-flex-wrap > div {
+  .fh5co-cards .fh5co-flex-wrap>div {
     width: 100%;
     margin-right: 0;
   }
@@ -864,16 +864,8 @@ body.offcanvas .fh5co-nav-toggle {
   color: #fff;
 }
 
-.owl-carousel-fullwidth.fh5co-light-arrow
-  .owl-controls
-  .owl-nav
-  .owl-next:hover
-  i,
-.owl-carousel-fullwidth.fh5co-light-arrow
-  .owl-controls
-  .owl-nav
-  .owl-prev:hover
-  i {
+.owl-carousel-fullwidth.fh5co-light-arrow .owl-controls .owl-nav .owl-next:hover i,
+.owl-carousel-fullwidth.fh5co-light-arrow .owl-controls .owl-nav .owl-prev:hover i {
   color: #fff;
 }
 
@@ -1315,8 +1307,8 @@ body.offcanvas .fh5co-nav-toggle {
   margin: 0px;
 }
 
-.pagination > li > a,
-.pagination > li > span {
+.pagination>li>a,
+.pagination>li>span {
   position: relative;
   float: left;
   padding: 6px 12px;
@@ -1337,12 +1329,12 @@ body.offcanvas .fh5co-nav-toggle {
   border-radius: 0.25rem;
 }
 
-.pager > li {
+.pager>li {
   list-style-type: none;
 }
 
-.pager > li > a,
-.pager > li > span {
+.pager>li>a,
+.pager>li>span {
   position: relative;
   float: left;
   padding: 6px 12px;
@@ -1451,6 +1443,7 @@ body.offcanvas .fh5co-nav-toggle {
 
 /* ขนาดจอโทรศัพท์มือถือ Smartphones (portrait and landscape) ----------- */
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+
   /* หน้า home */
   #fh5co-main .fh5co-narrow-content:first-child {
     padding-bottom: 10px;
@@ -1471,7 +1464,7 @@ body.offcanvas .fh5co-nav-toggle {
   }
 
   .work-item {
-    width: 100px;
+    width: 95px;
     flex: 0 0 auto;
     margin-bottom: 0px;
   }
@@ -1539,6 +1532,10 @@ body.offcanvas .fh5co-nav-toggle {
     bottom: 10px;
     right: 10px;
   }
+
+  .btn {
+    padding: 8px 10px !important;
+  }
 }
 
 /* ขนาดจอ laptop ----------- */
@@ -1561,6 +1558,7 @@ body.offcanvas .fh5co-nav-toggle {
 
 /* ขนาดจอ PC เป็นต้นไป ----------- */
 @media only screen and (min-device-width: 1441px) {
+
   /* หน้าแรก */
   .work-item {
     width: 200px;
@@ -1574,6 +1572,7 @@ body.offcanvas .fh5co-nav-toggle {
 
 /* ขนาดจอ ipad & ipad pro ----------- */
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+
   /* หน้า home */
   #fh5co-main .fh5co-narrow-content:first-child {
     padding-bottom: 10px;

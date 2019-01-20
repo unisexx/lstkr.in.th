@@ -472,11 +472,11 @@ class CrawlerController extends Controller
         Sticker::select('id','sticker_code')
                     ->where('status','approve')
                     ->where('category','official')
-                    ->where('country','taiwan')
+                    ->where('country','indonesia')
                     ->whereNull('stamp_start')
                     ->whereNull('stamp_end')
                     ->where('status','<>','draft')
-                    ->orderBy('id', 'desc')
+                    ->orderBy('id', 'asc')
                     ->chunk(100, function ($sticker) {
                         
             foreach ($sticker as $row) {
