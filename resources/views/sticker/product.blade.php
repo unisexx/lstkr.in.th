@@ -34,7 +34,10 @@
 	</div>
 	<!-- ปุ่มสั่งซื้อ -->
 
-	@if($rs->detail) <p class="sticker-detail animate-box" data-animate-effect="fadeInLeft">{{ $rs->detail }}</p> @endif
+	@if($rs->detail) 
+		<p class="sticker-detail animate-box" data-animate-effect="fadeInLeft">{{ $rs->detail }}</p>
+		<p class="animate-box" data-animate-effect="fadeInLeft"><small>*** โปรดแตะที่ตัวสติ๊กเกอร์เพื่อดูตัวอย่าง ***</small></p> 
+	@endif
 
 	<div class="animate-box" data-animate-effect="fadeInLeft">
 		@if($rs->stamp_start === null)
@@ -43,22 +46,26 @@
 
 		@else
 
-			@for($x = $rs->stamp_start; $x <= $rs->stamp_end; $x++)
-			@php
-				if($rs->stickerresourcetype == 'SOUND' || $rs->stickerresourcetype == 'STATIC'){
-					$data_animation = "https://stickershop.line-scdn.net/stickershop/v".$rs->version."/sticker/".$x."/android/sticker.png;compress=true";
-				}elseif($rs->stickerresourcetype == 'POPUP' || $rs->stickerresourcetype == 'POPUP_SOUND'){
-					$data_animation = "https://stickershop.line-scdn.net/stickershop/v".$rs->version."/sticker/".$x."/IOS/sticker_popup.png;compress=true";
-				}
-				else{
-					$data_animation = "https://stickershop.line-scdn.net/stickershop/v".$rs->version."/sticker/".$x."/IOS/sticker_animation@2x.png;compress=true";
-				}
-			@endphp
-				<img class="sticker-stamp playAnimate" src="https://stickershop.line-scdn.net/stickershop/v{{ $rs->version }}/sticker/{{ $x }}/android/sticker.png;compress=true" data-animation="{{ $data_animation }}">
-				<audio preload="metadata">
-					<source src="https://sdl-stickershop.line.naver.jp/products/0/0/{{ $rs->version }}/{{ $rs->sticker_code }}/android/sound/{{ $x }}.m4a" type="audio/mpeg">
-				</audio>
-			@endfor
+			<ul class="list-inline">
+				@for($x = $rs->stamp_start; $x <= $rs->stamp_end; $x++)
+				@php
+					if($rs->stickerresourcetype == 'SOUND' || $rs->stickerresourcetype == 'STATIC'){
+						$data_animation = "https://stickershop.line-scdn.net/stickershop/v".$rs->version."/sticker/".$x."/android/sticker.png;compress=true";
+					}elseif($rs->stickerresourcetype == 'POPUP' || $rs->stickerresourcetype == 'POPUP_SOUND'){
+						$data_animation = "https://stickershop.line-scdn.net/stickershop/v".$rs->version."/sticker/".$x."/IOS/sticker_popup.png;compress=true";
+					}
+					else{
+						$data_animation = "https://stickershop.line-scdn.net/stickershop/v".$rs->version."/sticker/".$x."/IOS/sticker_animation@2x.png;compress=true";
+					}
+				@endphp
+					<li class="sticker-stamp-list">
+						<img class="sticker-stamp playAnimate" src="https://stickershop.line-scdn.net/stickershop/v{{ $rs->version }}/sticker/{{ $x }}/android/sticker.png;compress=true" data-animation="{{ $data_animation }}">
+						<audio preload="metadata">
+							<source src="https://sdl-stickershop.line.naver.jp/products/0/0/{{ $rs->version }}/{{ $rs->sticker_code }}/android/sound/{{ $x }}.m4a" type="audio/mpeg">
+						</audio>
+					</li>
+				@endfor
+			</ul>
 
 		@endif
 	</div>

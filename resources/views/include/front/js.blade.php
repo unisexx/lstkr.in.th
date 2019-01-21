@@ -45,24 +45,26 @@ $('ducument').ready(function(){
 
     // เปิด sticker stamp animation ตอนคลิก
     $('.playAnimate').click(function(){
-        // หยุดเสียงทั้งหมด
-        $('audio').each(function(){
-            this.pause(); // Stop playing
-            this.currentTime = 0; // Reset time
-        }); 
-
-        // เล่นเสียง
-        var audio = $(this).next('audio')[0];
-        audio.play();
-
-        // เล่น sticker animation
-		$(this).attr("src", $(this).data('animation'));
-        
-        // $(this).css( "opacity", "1" ).siblings().css( "opacity", "0.2" ).delay(3000)
-        // .queue(function (next) { 
-        //     $('.playAnimate').css("opacity", "1"); 
-        //     next(); 
-        // });
+        playAnimate($(this));
     });
+
 });
+
+function playAnimate(thisObj){
+    // console.log(thisObj);
+
+    $('audio').each(function(){
+        this.pause(); // Stop playing
+        this.currentTime = 0; // Reset time
+    }); 
+
+    // เล่นเสียง
+    var audio = $(thisObj).next('audio')[0];
+    audio.play();
+
+    // เล่น sticker animation
+    $(thisObj).attr("src", $(thisObj).data('animation'))
+    .css({"opacity":"1"})
+    .closest('li').siblings().find('img').css({"opacity":"0.4"});
+}
 </script>
