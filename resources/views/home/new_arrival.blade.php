@@ -10,7 +10,10 @@
 				<div class="work-item text-center">
 					<!-- {!! new_icon($row->sticker_created) !!} -->
 					<a href="{{ url('sticker/product/'.$row->sticker_code) }}">
-						<img src="https://sdl-stickershop.line.naver.jp/products/0/0/{{ $row->version }}/{{ $row->sticker_code }}/android/main.png" alt="สติ๊กเกอร์ไลน์ {{ $row->sticker_title_th }}" class="img-fluid">
+						<div class="sticker-image-cover">
+							<img src="https://sdl-stickershop.line.naver.jp/products/0/0/{{ $row->version }}/{{ $row->sticker_code }}/android/main.png" alt="สติ๊กเกอร์ไลน์ {{ $row->sticker_title_th }}" class="img-fluid">
+							{!! getStickerResourctTypeIcon($row->stickerresourcetype) !!}
+						</div>
 						<h3 class="fh5co-work-title">{{ $row->sticker_title_th }}</h3>
 						<p>{{ ucfirst($row->sticker_country) }}, {{ convert_line_coin_2_money($row->sticker_price) }} บาท</p>
 					</a>
