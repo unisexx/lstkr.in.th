@@ -10,7 +10,7 @@
 		<option value="new" {{ Request::segment(4) == 'new' ? 'selected' : '' }}>ใหม่ล่าสุด</option>
 	</select>
 
-	<div class="animate-box d-flex flex-wrap" data-animate-effect="fadeInLeft">
+	<div class="animate-box d-flex flex-wrap justify-content-around" data-animate-effect="fadeInLeft">
 		@foreach($theme as $row)
 		<div class="work-item text-center">
 			{!! new_icon($row->created) !!}
