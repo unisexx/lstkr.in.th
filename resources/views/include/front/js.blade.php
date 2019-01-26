@@ -47,7 +47,6 @@ $('ducument').ready(function(){
     $('.playAnimate').click(function(){
         playAnimate($(this));
     });
-
 });
 
 function playAnimate(thisObj){

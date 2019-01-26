@@ -8,7 +8,7 @@
 
 		<div class="sticker-image-cover">
 			<img class="img-fluid playAnimate" src="{{ get_sticker_img_url($rs->stickerresourcetype,$rs->version,$rs->sticker_code) }}" alt="สติ๊กเกอร์ไลน์ {{ $rs->title_th }}" data-animation="{{ get_sticker_img_url($rs->stickerresourcetype,$rs->version,$rs->sticker_code) }}">
-			<audio preload="metadata">
+			<audio id="mainAudio" class="d-none" controls autoplay preload="metadata">
 				<source src="https://sdl-stickershop.line.naver.jp/stickershop/v{{ $rs->version }}/product/{{ $rs->sticker_code }}/IOS/main_sound.m4a" type="audio/mpeg">
 			</audio>
 			{!! getStickerResourctTypeIcon($rs->stickerresourcetype) !!}
@@ -36,8 +36,8 @@
 
 	@if($rs->detail) 
 		<p class="sticker-detail animate-box" data-animate-effect="fadeInLeft">{{ $rs->detail }}</p>
-		<p class="animate-box" data-animate-effect="fadeInLeft"><small>*** โปรดแตะที่ตัวสติ๊กเกอร์เพื่อดูตัวอย่าง หรือฟังเสียง (ถ้าเป็นสติ๊กเกอร์แบบมีเสียง) ***</small></p> 
 	@endif
+	<p class="animate-box" data-animate-effect="fadeInLeft"><small>*** โปรดแตะที่ตัวสติ๊กเกอร์เพื่อดูตัวอย่าง หรือฟังเสียง (ถ้าเป็นสติ๊กเกอร์แบบมีเสียง) ***</small></p> 
 
 	<div class="animate-box" data-animate-effect="fadeInLeft">
 		@if($rs->stamp_start === null)
