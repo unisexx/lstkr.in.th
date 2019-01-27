@@ -13,9 +13,9 @@
 <div class="fh5co-narrow-content">
 	<div class="d-flex justify-content-between align-items-baseline animate-box" data-animate-effect="fadeInLeft">
 		<h2 class="fh5co-heading">สติ๊กเกอร์ไลน์</h2>
-		<p class="text-right read-more-text"><a href="{{ url('search/sticker?q='.@$_GET['q']) }}">ดูทั้งหมด ></a></p>
+		@if(@$_GET['q'] != '') <p class="text-right read-more-text"><a href="{{ url('search/sticker?q='.@$_GET['q']) }}">ดูทั้งหมด ></a></p> @endif
 	</div>
-	<div class="row animate-box d-flex flex-wrap" data-animate-effect="fadeInLeft">
+	<div class="animate-box d-flex flex-wrap justify-content-around" data-animate-effect="fadeInLeft">
 		@foreach($sticker as $row)
 		<div class="work-item text-center">
 			<a href="{{ url('sticker/product/'.$row->sticker_code) }}">
@@ -34,9 +34,9 @@
 <div class="fh5co-narrow-content">
 	<div class="d-flex justify-content-between align-items-baseline animate-box" data-animate-effect="fadeInLeft">
 		<h2 class="fh5co-heading">ธีมไลน์</h2>
-		<p class="text-right read-more-text"><a href="{{ url('search/theme?q='.@$_GET['q']) }}">ดูทั้งหมด ></a></p>
+		@if(@$_GET['q'] != '') <p class="text-right read-more-text"><a href="{{ url('search/theme?q='.@$_GET['q']) }}">ดูทั้งหมด ></a></p> @endif
 	</div>
-	<div class="row animate-box d-flex flex-wrap" data-animate-effect="fadeInLeft">
+	<div class="animate-box d-flex flex-wrap justify-content-around" data-animate-effect="fadeInLeft">
 		@foreach($theme as $row)
 		<div class="work-item text-center">
 			<a href="{{ url('theme/product/'.$row->id) }}">
@@ -52,9 +52,9 @@
 <div class="fh5co-narrow-content">
 	<div class="d-flex justify-content-between align-items-baseline animate-box" data-animate-effect="fadeInLeft">
 		<h2 class="fh5co-heading">อิโมจิไลน์</h2>
-		<p class="text-right read-more-text"><a href="{{ url('search/emoji?q='.@$_GET['q']) }}">ดูทั้งหมด ></a></p>
+		@if(@$_GET['q'] != '') <p class="text-right read-more-text"><a href="{{ url('search/emoji?q='.@$_GET['q']) }}">ดูทั้งหมด ></a></p> @endif
 	</div>
-	<div class="row animate-box d-flex flex-wrap" data-animate-effect="fadeInLeft">
+	<div class="animate-box d-flex flex-wrap justify-content-around" data-animate-effect="fadeInLeft">
 		@foreach($emoji as $row)
 		<div class="work-item text-center">
 			<a href="{{ url('emoji/product/'.$row->id) }}">

@@ -16,7 +16,7 @@
 <div class="fh5co-narrow-content">
 	<h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">ผลการค้นหา "{{ @$_GET['q'] }}"</h2>
 
-	<div class="animate-box d-flex flex-wrap" data-animate-effect="fadeInLeft">
+	<div class="animate-box d-flex flex-wrap justify-content-around" data-animate-effect="fadeInLeft">
 		@foreach($search as $row)
 		<div class="work-item text-center">
 
