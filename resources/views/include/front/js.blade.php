@@ -63,7 +63,7 @@ function playAnimate(thisObj){
 
     // เล่น sticker animation
     $(thisObj).attr("src", $(thisObj).data('animation'))
-    .css({"opacity":"1"})
-    .closest('li').siblings().find('img').css({"opacity":"0.4"});
+    .css({"opacity":"1","width":"calc(25%)"})
+    .closest('li').siblings().find('img').css({"opacity":"0.4","width":"calc(25% - 6px)"});
 }
 </script>

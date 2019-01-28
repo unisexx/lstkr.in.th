@@ -9,7 +9,7 @@
 		<div class="sticker-image-cover">
 			<img class="img-fluid playAnimate" src="{{ get_sticker_img_url($rs->stickerresourcetype,$rs->version,$rs->sticker_code) }}" alt="สติ๊กเกอร์ไลน์ {{ $rs->title_th }}" data-animation="{{ get_sticker_img_url($rs->stickerresourcetype,$rs->version,$rs->sticker_code) }}">
 			<audio id="mainAudio" class="d-none" controls autoplay preload="metadata">
-				<source src="https://sdl-stickershop.line.naver.jp/stickershop/v{{ $rs->version }}/product/{{ $rs->sticker_code }}/IOS/main_sound.m4a" type="audio/mpeg">
+				<source src="https://sdl-stickershop.line.naver.jp/stickershop/v1/product/{{ $rs->sticker_code }}/IOS/main_sound.m4a" type="audio/mpeg">
 			</audio>
 			{!! getStickerResourctTypeIcon($rs->stickerresourcetype) !!}
 		</div>
