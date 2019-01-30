@@ -61,9 +61,17 @@ function playAnimate(thisObj){
     var audio = $(thisObj).next('audio')[0];
     audio.play();
 
-    // เล่น sticker animation
-    $(thisObj).attr("src", $(thisObj).data('animation'))
-    .css({"opacity":"1","width":"calc(25%)"})
-    .closest('li').siblings().find('img').css({"opacity":"0.4","width":"calc(25% - 6px)"});
+    // เล่น sticker animation (ถ้าเป็น stamp ให้ขยายเล็กน้อย ถ้าเป็น main เล่นเสียงอย่างเดียว)
+    if( $(thisObj).hasClass("sticker-stamp") ){
+
+        $(thisObj).attr("src", $(thisObj).data('animation'))
+            .css({"opacity":"1","width":"calc(25%)"})
+            .closest('li').siblings().find('img').css({"opacity":"0.4","width":"calc(25% - 6px)"});
+
+    }else{
+
+        $(thisObj).attr("src", $(thisObj).data('animation'));
+
+    }
 }
 </script>

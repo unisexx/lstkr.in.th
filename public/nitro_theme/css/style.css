@@ -1551,6 +1551,12 @@ body.offcanvas .fh5co-nav-toggle {
 
 /* ขนาดจอ laptop ----------- */
 @media only screen and (min-device-width: 1280px) {
+  .work-item a h3 {
+    font-size: 16px;
+    font-weight: normal;
+    margin-bottom: 0px;
+  }
+
   .work-item {
     width: 134px;
   }
@@ -1564,6 +1570,12 @@ body.offcanvas .fh5co-nav-toggle {
 @media only screen and (min-device-width: 1440px) {
   .work-item {
     width: 150px;
+  }
+
+  .work-item a h3 {
+    font-size: 16px;
+    font-weight: normal;
+    margin-bottom: 0px;
   }
 }
 
