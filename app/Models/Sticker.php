@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Sticker extends Model
 {
     // use SoftDeletes;
+    use \Spiritix\LadaCache\Database\LadaCacheTrait;
 
     protected $fillable = array(
         'sticker_code',

@@ -81,11 +81,11 @@ class StickerController extends Controller
 	public function getProduct($id = null)
 	{
 		// cache file
-		$data['rs'] = Cache::rememberForever('stickers_'.$id, function() use ($id) {
-			return DB::table('stickers')->where('sticker_code',$id)->first();
-		});
+		// $data['rs'] = Cache::rememberForever('stickers_'.$id, function() use ($id) {
+		// 	return DB::table('stickers')->where('sticker_code',$id)->first();
+		// });
 		
-		// $data['rs'] = Sticker::where('sticker_code',$id)->first();
+		$data['rs'] = Sticker::where('sticker_code',$id)->first();
 
 		// SEO
 		SEO::setTitle($data['rs']->title_th . ' - สติ๊กเกอร์ไลน์');
