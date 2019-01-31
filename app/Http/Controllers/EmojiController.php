@@ -14,6 +14,7 @@ use SEO;
 use SEOMeta;
 use Session;
 use OpenGraph;
+use Cache;
 
 
 class EmojiController extends Controller
@@ -77,7 +78,12 @@ class EmojiController extends Controller
 
 	public function getProduct($id)
 	{
-		$data['rs'] = Emoji::find($id);
+		// cache file
+		$data['rs'] = Cache::rememberForever('emoji_'.$id, function() use ($id) {
+			return DB::table('emojis')->find($id);
+		});
+
+		// $data['rs'] = Emoji::find($id);
 
 		// SEO
 		SEO::setTitle($data['rs']->title . ' - อิโมจิไลน์');

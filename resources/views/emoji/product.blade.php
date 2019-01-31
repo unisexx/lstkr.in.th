@@ -7,7 +7,7 @@
 	<div class="d-flex animate-box" data-animate-effect="fadeInLeft">
 
 		<div class="sticker-image-cover">
-			<img class="img-fluid" src="https://stickershop.line-scdn.net/sticonshop/v1/product/{{ $rs->emoji_code }}/iphone/main.png" alt="สติ๊กเกอร์ไลน์ {{ $rs->title_th }}">
+			<img class="img-fluid" src="https://stickershop.line-scdn.net/sticonshop/v1/product/{{ $rs->emoji_code }}/iphone/main.png" alt="อิโมจิไลน์ {{ $rs->title }}">
 		</div>
 
 		<div class="sticker-infomation">

@@ -13,6 +13,7 @@ use DB;
 use SEO;
 use SEOMeta;
 use OpenGraph;
+use	Cache;
 
 class ThemeController extends Controller {
     public function getIndex() {
@@ -72,13 +73,18 @@ class ThemeController extends Controller {
 	}
 	
 	public function getProduct($id){
-		$data['rs'] = Theme::find($id);
+		// cache file
+		$data['rs'] = Cache::rememberForever('theme_'.$id, function() use ($id) {
+			return DB::table('themes')->find($id);
+		});
+		
+		// $data['rs'] = Theme::find($id);
 
 		// SEO
 		SEO::setTitle($data['rs']->title.' - ธีมไลน์');
 		SEO::setDescription('ธีมไลน์'.$data['rs']->detail);
 		SEO::opengraph()->setUrl(url()->current());
-		SEO::addImages($data['rs']->cover);
+		SEO::addImages('https://shop.line-scdn.net/themeshop/v1/products/li/st/kr/'.$data['rs']->theme_code.'/1/WEBSTORE/icon_198x278.png');
 		SEO::twitter()->setSite('@line2me_th');
 		SEOMeta::setKeywords('line, sticker, theme, creator, animation, sound, popup, ไลน์, สติ๊กเกอร์, ธีม, ครีเอเทอร์, ดุ๊กดิ๊ก, มีเสียง, ป๊อปอัพ');
 		SEOMeta::addKeyword('line, sticker, theme, creator, animation, sound, popup, ไลน์, สติ๊กเกอร์, ธีม, ครีเอเทอร์, ดุ๊กดิ๊ก, มีเสียง, ป๊อปอัพ');

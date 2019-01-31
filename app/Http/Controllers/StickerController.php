@@ -14,6 +14,7 @@ use SEO;
 use SEOMeta;
 use Session;
 use OpenGraph;
+use Cache;
 
 
 class StickerController extends Controller
@@ -79,11 +80,16 @@ class StickerController extends Controller
 
 	public function getProduct($id = null)
 	{
-		$data['rs'] = Sticker::where('sticker_code',$id)->first();
+		// cache file
+		$data['rs'] = Cache::rememberForever('stickers_'.$id, function() use ($id) {
+			return DB::table('stickers')->where('sticker_code',$id)->first();
+		});
+		
+		// $data['rs'] = Sticker::where('sticker_code',$id)->first();
 
 		// SEO
 		SEO::setTitle($data['rs']->title_th . ' - สติ๊กเกอร์ไลน์');
-		SEO::setDescription('สติ๊กเกอร์ไลน์' . $data['rs']->description);
+		SEO::setDescription('สติ๊กเกอร์ไลน์' . $data['rs']->detail);
 		SEO::opengraph()->setUrl(url()->current());
 		SEO::addImages('http://sdl-stickershop.line.naver.jp/products/0/0/' . $data['rs']->version . '/' . $data['rs']->sticker_code . '/LINEStorePC/main.png');
 		SEO::twitter()->setSite('@line2me_th');
