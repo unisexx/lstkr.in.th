@@ -265,7 +265,7 @@ class HomeController extends Controller
                                 LEFT JOIN stickers ON new_arrival_products.product_code = stickers.sticker_code
                                 LEFT JOIN themes ON new_arrival_products.product_code = themes.theme_code
                                 LEFT JOIN emojis ON new_arrival_products.product_code = emojis.emoji_code
-                                WHERE new_arrival_products.new_arrival_id = ".$data['new_arrival']->id);
+                                WHERE new_arrival_products.new_arrival_id = ".$data['new_arrival']->id." order by id desc");
         return view('home.new_arrival',$data);
     }
 
