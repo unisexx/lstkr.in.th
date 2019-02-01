@@ -40,7 +40,12 @@ Facebook: 		https://www.facebook.com/fh5co
 <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'> -->
 
 <!-- Animate.css -->
-<link rel="stylesheet" href="nitro_theme/css/animate.css">
+<!-- <link rel="stylesheet" href="nitro_theme/css/animate.css"> -->
+<style>
+.js .animate-box{
+    opacity:1 !important;
+}
+</style>
 
 <!-- Icomoon Icon Fonts-->
 <!-- <link rel="stylesheet" href="nitro_theme/css/icomoon.css"> -->
