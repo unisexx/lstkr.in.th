@@ -15,6 +15,7 @@ use SEOMeta;
 use Session;
 use OpenGraph;
 use Cache;
+use Redis;
 
 
 class StickerController extends Controller
@@ -80,12 +81,21 @@ class StickerController extends Controller
 
 	public function getProduct($id = null)
 	{
-		// cache file
-		// $data['rs'] = Cache::rememberForever('stickers_'.$id, function() use ($id) {
-		// 	return DB::table('stickers')->where('sticker_code',$id)->first();
-		// });
-		
-		$data['rs'] = Sticker::where('sticker_code',$id)->first();
+		// ใช้ Cache File
+		$data['rs'] = Cache::rememberForever('stickers_'.$id, function() use ($id) {
+			return DB::table('stickers')->where('sticker_code',$id)->first();
+		});
+
+		// ใช้ Redis Cache
+		// $redis = Redis::get('laravel:stickers_'.$id);
+		// if ($redis) {
+		// 	$data['rs'] = unserialize($redis);
+		// }else{
+		// 	$data['rs'] = DB::table('stickers')->where('sticker_code',$id)->first();
+		// 	Cache::store('redis')->put('stickers_'.$id, $data['rs'], 10);
+		// }
+
+		// $data['rs'] = Sticker::where('sticker_code',$id)->first();
 
 		// SEO
 		SEO::setTitle($data['rs']->title_th . ' - สติ๊กเกอร์ไลน์');

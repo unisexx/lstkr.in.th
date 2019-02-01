@@ -155,7 +155,7 @@ return [
         Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
         // Arrilot\Widgets\ServiceProvider::class,
         // Intervention\Image\ImageServiceProvider::class,
-        Spiritix\LadaCache\LadaCacheServiceProvider::class,
+        // Spiritix\LadaCache\LadaCacheServiceProvider::class,
 
         /*
          * Application Service Providers...

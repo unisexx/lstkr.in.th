@@ -2,12 +2,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-// use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Sticker extends Model
 {
-    // use SoftDeletes;
-    use \Spiritix\LadaCache\Database\LadaCacheTrait;
 
     protected $fillable = array(
         'sticker_code',
@@ -32,10 +29,4 @@ class Sticker extends Model
         'stamp_end',
     );
     
-    // protected $dates = ['deleted_at'];
-
-    // public function stamp()
-    // {
-    //     return $this->hasMany('App\Models\Stamp', 'sticker_id', 'id');
-    // }
 }
