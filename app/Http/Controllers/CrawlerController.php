@@ -22,15 +22,16 @@ class CrawlerController extends Controller
     /**
      * ดึงอิโมจิจากเว็บ store.line
      * Type: 1 = official, 2 = creator
+     * Cat : top, new, top_creators, new_top_creators, new_creators
      * Page: หน้าที่จะเข้าไปดึงข้อมูล
      */
-	public function getEmojistore($type,$page = null)
+	public function getEmojistore($type,$cat,$page = null)
 	{
         if($type == 1){ // official
-            $pageTarget = 'https://store.line.me/emojishop/showcase/new/th?page='.$page;
+            $pageTarget = 'https://store.line.me/emojishop/showcase/'.$cat.'/th?page='.$page;
             $category = 'official';
         }elseif($type == 2){ // creator
-            $pageTarget = 'https://store.line.me/emojishop/showcase/new_creators/th?page='.$page;
+            $pageTarget = 'https://store.line.me/emojishop/showcase/'.$cat.'/th?page='.$page;
             $category = 'creator';
         }
 
@@ -85,7 +86,7 @@ class CrawlerController extends Controller
         // ดำเนินการเสร็จทั้งหมดแล้ว ให้ redirect ถ้า $page ยังไม่ถึงหน้าแรก
         if(isset($page) && $page != 1){
             $page = $page - 1;
-            $page_redirect = url('crawler/emojistore/'.$type.'/'.$page);
+            $page_redirect = url('crawler/emojistore/'.$type.'/'.$cat.'/'.$page);
             echo "<script>setTimeout(function(){ window.location.href = '".$page_redirect."'; }, 1000);</script>";
         }
     }
@@ -93,15 +94,16 @@ class CrawlerController extends Controller
     /**
      * ดึงสติ๊กเกอร์ไลน์จากเว็บ store.line
      * Type: 1 = official, 2 = creator
+     * cat : top, new, top_creators, new_top_creators, new_creators
      * Page: หน้าที่จะเข้าไปดึงข้อมูล
      */
-    public function getStickerstore($type,$page = null)
+    public function getStickerstore($type,$cat,$page = null)
     {
         if($type == 1){ // official
-            $pageTarget = 'https://store.line.me/stickershop/showcase/new/th?page='.$page;
+            $pageTarget = 'https://store.line.me/stickershop/showcase/'.$cat.'/th?page='.$page;
             $category = 'official';
         }elseif($type == 2){ // creator
-            $pageTarget = 'https://store.line.me/stickershop/showcase/new_creators/th?page='.$page;
+            $pageTarget = 'https://store.line.me/stickershop/showcase/'.$cat.'/th?page='.$page;
             $category = 'creator';
         }
 
@@ -213,7 +215,7 @@ class CrawlerController extends Controller
         // ดำเนินการเสร็จทั้งหมดแล้ว ให้ redirect ถ้า $page ยังไม่ถึงหน้าแรก
         if(isset($page) && $page != 1){
             $page = $page - 1;
-            $page_redirect = url('crawler/stickerstore/'.$type.'/'.$page);
+            $page_redirect = url('crawler/stickerstore/'.$type.'/'.$cat.'/'.$page);
             echo "<script>setTimeout(function(){ window.location.href = '".$page_redirect."'; }, 1000);</script>";
         }
     }
@@ -221,15 +223,16 @@ class CrawlerController extends Controller
     /**
      * ดึงธีมจากเว็บ store.line
      * Type: 1 = official, 2 = creator
+     * cat : top, new, top_creators, new_creators
      * Page: หน้าที่จะเข้าไปดึงข้อมูล
      */
-    public function getThemestore($type,$page = null)
+    public function getThemestore($type,$cat,$page = null)
     {
         if($type == 1){ // official
-            $pageTarget = 'https://store.line.me/themeshop/showcase/new/th?page='.$page;
+            $pageTarget = 'https://store.line.me/themeshop/showcase/'.$cat.'/th?page='.$page;
             $category = 'official';
         }elseif($type == 2){ // creator
-            $pageTarget = 'https://store.line.me/themeshop/showcase/new_creators/th?page='.$page;
+            $pageTarget = 'https://store.line.me/themeshop/showcase/'.$cat.'/th?page='.$page;
             $category = 'creator';
         }
 
@@ -285,7 +288,7 @@ class CrawlerController extends Controller
         // ดำเนินการเสร็จทั้งหมดแล้ว ให้ redirect ถ้า $page ยังไม่ถึงหน้าแรก
         if(isset($page) && $page != 1){
             $page = $page - 1;
-            $page_redirect = url('crawler/themestore/'.$type.'/'.$page);
+            $page_redirect = url('crawler/themestore/'.$type.'/'.$cat.'/'.$page);
             echo "<script>setTimeout(function(){ window.location.href = '".$page_redirect."'; }, 1000);</script>";
         }
     }
