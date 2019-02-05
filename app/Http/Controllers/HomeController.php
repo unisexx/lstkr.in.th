@@ -231,41 +231,27 @@ class HomeController extends Controller
     // }
 
     public function new_arrival($id=false){
+        
         $data['new_arrival'] = NewArrival::orderBy('id', 'desc')->first();
-        $data['product'] = DB::select("SELECT
-                                    new_arrival_products.*,
-                                    stickers.sticker_code,
-                                    stickers.category sticker_category,
-                                    stickers.country sticker_country,
-                                    stickers.title_th sticker_title_th,
-                                    stickers.price sticker_price,
-                                    stickers.version,
-                                    stickers.onsale,
-                                    stickers.validdays,
-                                    stickers.hasanimation,
-                                    stickers.hassound,
-                                    stickers.stickerresourcetype,
-                                    stickers.created sticker_created,
-                                    themes.id theme_id,
-                                    themes.theme_code,
-                                    themes.category theme_category,
-                                    themes.country theme_country,
-                                    themes.title theme_title,
-                                    themes.price theme_price,
-                                    themes.created theme_created,
-                                    emojis.id emoji_id,
-                                    emojis.emoji_code,
-                                    emojis.category emoji_category,
-                                    emojis.country emoji_country,
-                                    emojis.title emoji_title,
-                                    emojis.price emoji_price,
-                                    emojis.created emoji_created
-                                FROM
-                                    new_arrival_products
-                                LEFT JOIN stickers ON new_arrival_products.product_code = stickers.sticker_code
-                                LEFT JOIN themes ON new_arrival_products.product_code = themes.theme_code
-                                LEFT JOIN emojis ON new_arrival_products.product_code = emojis.emoji_code
-                                WHERE new_arrival_products.new_arrival_id = ".$data['new_arrival']->id." order by id desc");
+
+        $data['sticker'] = Sticker::where('category','official')
+                            ->where('status','approve')
+                            ->whereBetween('created', [$data['new_arrival']
+                            ->start_date, $data['new_arrival']->end_date])
+                            ->get();
+
+        $data['theme'] = Theme::where('category','official')
+                            ->where('status','approve')
+                            ->whereBetween('created', [$data['new_arrival']
+                            ->start_date, $data['new_arrival']->end_date])
+                            ->get();
+
+        $data['emoji'] = Emoji::where('category','official')
+                            ->where('status','approve')
+                            ->whereBetween('created', [$data['new_arrival']
+                            ->start_date, $data['new_arrival']->end_date])
+                            ->get();
+
         return view('home.new_arrival',$data);
     }
 
