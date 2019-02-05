@@ -268,7 +268,7 @@ class HomeController extends Controller
         return view('aboutus');
     }
 
-    public function info(){
-        echo phpinfo();
-    }
+    // public function info(){
+    //     echo phpinfo();
+    // }
 }
