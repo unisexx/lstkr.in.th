@@ -29,7 +29,7 @@
 		@foreach($theme as $row)
 				<div class="work-item text-center">
 					<!-- {!! new_icon($row->theme_created) !!} -->
-					<a href="{{ url('theme/product/'.$row->theme_id) }}">
+					<a href="{{ url('theme/product/'.$row->id) }}">
 						<img src="https://shop.line-scdn.net/themeshop/v1/products/li/st/kr/{{ $row->theme_code }}/1/WEBSTORE/icon_198x278.png" alt="ธีมไลน์ {{ $row->theme_title }}" class="img-fluid">
 						<h3 class="fh5co-work-title">{{ $row->title }}</h3>
 						<p>{{ ucfirst($row->country) }}, {{ $row->price }} บาท</p>
@@ -47,7 +47,7 @@
 		@foreach($emoji as $row)
 				<div class="work-item text-center">
 					<!-- {!! new_icon($row->emoji_created) !!} -->
-					<a href="{{ url('emoji/product/'.$row->emoji_id) }}">
+					<a href="{{ url('emoji/product/'.$row->id) }}">
 						<img src="https://stickershop.line-scdn.net/sticonshop/v1/product/{{ $row->emoji_code }}/iphone/main.png" alt="อิโมจิไลน์ {{ $row->emoji_title }}" class="img-fluid">
 						<h3 class="fh5co-work-title">{{ $row->title }}</h3>
 						<p>{{ ucfirst($row->country) }}, {{ $row->price }} บาท</p>
