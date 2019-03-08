@@ -144,7 +144,8 @@ class CrawlerController extends Controller
                 }
 
                 // หาเวอร์ชั่นของสติ๊กเกอร์โดยวิเคราะห์จาก url ของรูปสติ๊กเกอร์
-                $image = trim($crawler_page->filter('div.mdCMN08Img > img')->attr('src'));
+                // $image = trim($crawler_page->filter('div.mdCMN08Img > img')->attr('src'));
+                $image = trim($crawler_page->filter('img.FnImage')->attr('src'));
                 $image = explode("/", $image);
                 $version = str_replace('v','',$image[4]);
 
@@ -166,11 +167,12 @@ class CrawlerController extends Controller
                 $hassound            = $productInfo['hasSound'];
                 $validdays           = $productInfo['validDays'];
                 $stickerresourcetype = $productInfo['stickerResourceType'];
-                $detail              = trim($crawler_page->filter('p.mdCMN08Desc')->text());
-                $credit              = trim($crawler_page->filter('p.mdCMN09Copy')->text());
+
+                $detail              = @trim($crawler_page->filter('p.mdCMN38Item01Txt')->text());
+                $credit              = @trim($crawler_page->filter('a.mdCMN38Item01Author')->text());
                 $sticker_code        = $sticker_code;
                 $created             = date("Y-m-d H:i:s");
-                $price               = @th_2_coin(substr(trim($crawler_page->filter('p.mdCMN08Price')->text()),0,-3));
+                $price               = @th_2_coin(substr(trim($crawler_page->filter('p.mdCMN38Item01Price')->text()),0,-3));
                 $country             = "thai";
                 $stamp_start         = reset($data)['stamp_code'];
                 $stamp_end           = end($data)['stamp_code'];
