@@ -85,6 +85,9 @@ class StickerController extends Controller
 		$data['rs'] = Cache::rememberForever('stickers_'.$id, function() use ($id) {
 			return DB::table('stickers')->where('sticker_code',$id)->first();
 		});
+		// $data['rs'] = Cache::remember('stickers_'.$id, 60, function() use ($id) {
+		// 	return DB::table('stickers')->where('sticker_code',$id)->first();
+		// });
 
 		// ใช้ Redis Cache
 		// $redis = Redis::get('laravel:stickers_'.$id);
