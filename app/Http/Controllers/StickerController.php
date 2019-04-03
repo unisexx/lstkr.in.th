@@ -82,9 +82,9 @@ class StickerController extends Controller
 	public function getProduct($id = null)
 	{
 		// ใช้ Cache File
-		$data['rs'] = Cache::rememberForever('stickers_'.$id, function() use ($id) {
-			return DB::table('stickers')->where('sticker_code',$id)->first();
-		});
+		// $data['rs'] = Cache::rememberForever('stickers_'.$id, function() use ($id) {
+		// 	return DB::table('stickers')->where('sticker_code',$id)->first();
+		// });
 		// $data['rs'] = Cache::remember('stickers_'.$id, 60, function() use ($id) {
 		// 	return DB::table('stickers')->where('sticker_code',$id)->first();
 		// });
@@ -98,7 +98,7 @@ class StickerController extends Controller
 		// 	Cache::store('redis')->put('stickers_'.$id, $data['rs'], 10);
 		// }
 
-		// $data['rs'] = Sticker::where('sticker_code',$id)->first();
+		$data['rs'] = Sticker::where('sticker_code',$id)->first();
 
 		// SEO
 		SEO::setTitle($data['rs']->title_th . ' - สติ๊กเกอร์ไลน์');

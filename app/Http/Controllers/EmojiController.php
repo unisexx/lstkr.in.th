@@ -79,11 +79,11 @@ class EmojiController extends Controller
 	public function getProduct($id)
 	{
 		// cache file
-		$data['rs'] = Cache::rememberForever('emoji_'.$id, function() use ($id) {
-			return DB::table('emojis')->find($id);
-		});
+		// $data['rs'] = Cache::rememberForever('emoji_'.$id, function() use ($id) {
+		// 	return DB::table('emojis')->find($id);
+		// });
 
-		// $data['rs'] = Emoji::find($id);
+		$data['rs'] = Emoji::find($id);
 
 		// SEO
 		SEO::setTitle($data['rs']->title . ' - อิโมจิไลน์');

@@ -74,11 +74,11 @@ class ThemeController extends Controller {
 	
 	public function getProduct($id){
 		// cache file
-		$data['rs'] = Cache::rememberForever('theme_'.$id, function() use ($id) {
-			return DB::table('themes')->find($id);
-		});
+		// $data['rs'] = Cache::rememberForever('theme_'.$id, function() use ($id) {
+		// 	return DB::table('themes')->find($id);
+		// });
 		
-		// $data['rs'] = Theme::find($id);
+		$data['rs'] = Theme::find($id);
 
 		// SEO
 		SEO::setTitle($data['rs']->title.' - ธีมไลน์');
