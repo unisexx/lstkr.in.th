@@ -51,6 +51,15 @@ class HomeController extends Controller
             ->take(30)
             ->get();
 
+        // ธีมไลน์โปรโมท
+        $data['theme_promote'] = DB::table('promotes')
+            ->join('themes', 'promotes.product_code', '=', 'themes.id')
+            ->select('themes.*')
+            ->where('promotes.end_date', '>=', Carbon::now()->toDateString())
+            ->inRandomOrder()
+            ->take(30)
+            ->get();
+
         // สติ๊กเกอร์ไลน์ทางการ (ไทย)
         $data['sticker_official_thai'] = new Sticker;
         $data['sticker_official_thai'] = $data['sticker_official_thai']
