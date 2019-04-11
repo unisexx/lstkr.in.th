@@ -274,11 +274,11 @@ class CrawlerController extends Controller
                 // หา stamp_start & stamp_end
                 for ($i = 0; $i < 40; $i++) {
                     // check node empty
-                    if ($crawler_page->filter('.mdCMN09Image')->eq($i)->count() != 0) {
-                        $imgTxt = $crawler_page->filter('.mdCMN09Image')->eq($i)->attr('style');
+                    if ($crawler_page->filter('span.mdCMN09Image.FnCustomBase')->eq($i)->count() != 0) {
+                        $imgTxt = $crawler_page->filter('span.mdCMN09Image.FnCustomBase')->eq($i)->attr('style');
                         $image_path = explode("/", getUrlFromText($imgTxt));
                         $stamp_code = $image_path[6];
-                        // dump($stamp_code);
+                        // dump($imgTxt);
 
                         $data[] = array(
                             'stamp_code' => $stamp_code,

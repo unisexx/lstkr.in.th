@@ -110,6 +110,8 @@ if(!function_exists('getStickerResourctTypeIcon'))
 			return "<div class='iconProperty iconPopup positionBottomRight icon-size-20'>ป๊อปอัพ</div>";
 		}elseif($resourceType == "POPUP_SOUND"){
 			return "<div class='iconProperty iconPopupSound positionBottomRight icon-size-20'>ป๊อปอัพและมีเสียง</div>";
+		}elseif($resourceType == "NAME_TEXT"){
+			return "<div class='iconProperty iconNameText positionBottomRight icon-size-20'>เติมคำ</div>";
 		}elseif($resourceType == "STATIC"){
 		}
 	}
