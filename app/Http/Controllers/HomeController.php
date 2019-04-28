@@ -241,6 +241,9 @@ class HomeController extends Controller
 
     public function new_arrival($id=false){
         
+        SEO::setTitle('สติ๊กเกอร์ไลน์อัพเดทล่าสุดประจำสัปดาห์');
+        SEO::setDescription('ขายสติ๊กเกอร์ไลน์ ธีมไลน์ อิโมจิไลน์ ของแท้ ไม่มีหาย เชื่อถือได้ 100% ติดต่อไอดีไลน์ ratasak1234');
+        
         $data['new_arrival'] = NewArrival::orderBy('id', 'desc')->first();
 
         $data['sticker'] = Sticker::where('category','official')
