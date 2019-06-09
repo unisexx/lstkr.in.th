@@ -11,11 +11,13 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta http-equiv="content-language" content="th" />
+<meta name="robots" content="index, follow" />
 {!! SEO::generate() !!}
+
 <title>Linesticker.in.th &mdash; ขายสติ๊กเกอร์ไลน์ ธีมไลน์ อิโมจิไลน์ของแท้ ราคาถูก ติดต่อไอดีไลน์ ratasak1234</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="ขายสติ๊กเกอร์ไลน์ ธีมไลน์ อิโมจิไลน์ของแท้ ซื้อง่าย ราคาถูก ติดต่อไอดีไลน์ ratasak1234" />
-<meta name="keywords" content="line, sticker, theme, creator, animation, sound, popup, ไลน์, สติ๊กเกอร์, ธีม, ครีเอเทอร์, ดุ๊กดิ๊ก, มีเสียง, ป๊อปอัพ, เติมคำ, ratasak1234, โปรโมทไลน์, เพิ่มยอดขายไลน์" />
+<meta name="keywords" content="line, sticker, theme, creator, animation, sound, popup, ไลน์, สติ๊กเกอร์, ธีม, ครีเอเทอร์, ดุ๊กดิ๊ก, มีเสียง, ป๊อปอัพ, เติมคำ, ratasak1234, โปรโมทไลน์, เพิ่มยอดขายไลน์, ขายสติ๊กเกอร์ไลน์, ขายไลน์, สติ๊กเกอร์ไลน์น่ารัก" />
 <meta name="author" content="linesticker.in.th" />
 
 <!-- Facebook and Twitter integration -->
