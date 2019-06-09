@@ -9,7 +9,7 @@ return [
             'title'        => "Linesticker", // set false to total remove
             'description'  => 'ขายสติ๊กเกอร์ไลน์ ธีมไลน์ อิโมจิไลน์ ของแท้ ไม่มีหาย', // set false to total remove
             'separator'    => ' - ',
-            'keywords'     => [],
+            'keywords'     => ['line', 'sticker', 'theme', 'creator', 'animation', 'sound', 'popup', 'ไลน์', 'สติ๊กเกอร์', 'ธีม', 'ครีเอเทอร์', 'ดุ๊กดิ๊ก', 'มีเสียง', 'ป๊อปอัพ'],
             'canonical'    => false, // Set null for using Url::current(), set false to total remove
         ],
 

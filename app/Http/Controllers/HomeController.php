@@ -39,8 +39,9 @@ class HomeController extends Controller
         SEO::opengraph()->setUrl(url()->current());
         SEO::addImages('https://linesticker.in.th/image/qr_ratasak1234.png');
         SEO::twitter()->setSite('@line2me_th');
-        SEOMeta::setKeywords('line, sticker, theme, creator, animation, sound, popup, ไลน์, สติ๊กเกอร์, ธีม, ครีเอเทอร์, ดุ๊กดิ๊ก, มีเสียง, ป๊อปอัพ');
-        SEOMeta::addKeyword('line, sticker, theme, creator, animation, sound, popup, ไลน์, สติ๊กเกอร์, ธีม, ครีเอเทอร์, ดุ๊กดิ๊ก, มีเสียง, ป๊อปอัพ');
+        // SEOMeta::setKeywords('line, sticker, theme, creator, animation, sound, popup, ไลน์, สติ๊กเกอร์, ธีม, ครีเอเทอร์, ดุ๊กดิ๊ก, มีเสียง, ป๊อปอัพ');
+        // SEOMeta::addKeyword('line, sticker, theme, creator, animation, sound, popup, ไลน์, สติ๊กเกอร์, ธีม, ครีเอเทอร์, ดุ๊กดิ๊ก, มีเสียง, ป๊อปอัพ');
+        // SEOMeta::addKeyword(['key1', 'key2', 'key3']);
 
         // สติ๊กเกอร์ไลน์โปรโมท
         $data['sticker_promote'] = DB::table('promotes')
@@ -71,6 +72,28 @@ class HomeController extends Controller
             ->inRandomOrder()
             ->take(30)
             ->get();
+
+        $data['new_arrival'] = NewArrival::orderBy('id', 'desc')->first();
+        // สตื๊กเกอร์ไลน์อัพเดท
+        $data['sticker_update'] = Sticker::where('category','official')
+                            ->where('status','approve')
+                            ->whereBetween('created_at', [$data['new_arrival']
+                            ->start_date, $data['new_arrival']->end_date])
+                            ->get();
+
+        // ธีมไลน์อัพเดท
+        $data['theme_update'] = Theme::where('category','official')
+                            ->where('status','approve')
+                            ->whereBetween('created_at', [$data['new_arrival']
+                            ->start_date, $data['new_arrival']->end_date])
+                            ->get();
+
+        // อิโมจิอัพเดท
+        $data['emoji_update'] = Emoji::where('category','official')
+                            ->where('status','approve')
+                            ->whereBetween('created_at', [$data['new_arrival']
+                            ->start_date, $data['new_arrival']->end_date])
+                            ->get();
 
         // สติ๊กเกอร์ไลน์ทางการ (ไทย)
         $data['sticker_official_thai'] = new Sticker;
