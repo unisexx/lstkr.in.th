@@ -76,7 +76,7 @@
 		@foreach($sticker_update as $row)
 		<div class="work-item text-center">
 			{!! new_icon($row->created_at) !!}
-			<a href="{{ url('sticker/'.$row->sticker_code) }}">
+			<a href="{{ url('sticker/product/'.$row->sticker_code) }}">
 				<div class="sticker-image-cover">
 					<img src="https://sdl-stickershop.line.naver.jp/products/0/0/{{ $row->version }}/{{ $row->sticker_code }}/android/main.png" alt="สติ๊กเกอร์ไลน์ {{ $row->title_th }}" class="img-fluid">
 					{!! getStickerResourctTypeIcon($row->stickerresourcetype) !!}
@@ -100,7 +100,7 @@
 		@foreach($emoji_update as $row)
 		<div class="work-item text-center">
 			{!! new_icon($row->created_at) !!}
-			<a href="{{ url('emoji/'.$row->id) }}">
+			<a href="{{ url('emoji/product/'.$row->id) }}">
 				<img src="https://stickershop.line-scdn.net/sticonshop/v1/product/{{ $row->emoji_code }}/iphone/main.png" alt="อิโมจิไลน์ {{ $row->title }}" class="img-fluid">
 				<h3 class="fh5co-work-title">{{ $row->title }}</h3>
 				<p>{{ ucfirst($row->country) }}, {{ $row->price }} บาท</p>
@@ -121,7 +121,7 @@
 		@foreach($theme_update as $row)
 		<div class="work-item text-center">
 			{!! new_icon($row->created_at) !!}
-			<a href="{{ url('theme/'.$row->id) }}">
+			<a href="{{ url('theme/product/'.$row->id) }}">
 				<img src="https://shop.line-scdn.net/themeshop/v1/products/li/st/kr/{{ $row->theme_code }}/1/WEBSTORE/icon_198x278.png" alt="ธีมไลน์ {{ $row->title_th }}" class="img-fluid">
 				<h3 class="fh5co-work-title">{{ $row->title }}</h3>
 				<p>{{ ucfirst($row->country) }}, {{ $row->price }} บาท</p>
