@@ -83,7 +83,6 @@
 	</div>
 
 	<!-- Social Share -->
-	<hr>
 	<ul class="list-inline">
 		<li class="list-inline-item">
 			แชร์ลิ้งค์ : 
@@ -102,7 +101,9 @@
 		</li>
 	</ul>
 	<!-- Social Share -->
+	<hr>
 		
 </div>
 
+@include('include.front._promote_section')
 @endsection
