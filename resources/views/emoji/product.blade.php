@@ -22,11 +22,7 @@
 	</div>
 
 	<!-- ปุ่มสั่งซื้อ -->
-	<div class="text-center animate-box" data-animate-effect="fadeInLeft">
-		<hr>
-			<a href="https://line.me/ti/p/~ratasak1234" target="_blank"><button type="button" class="btn btn-success btn-block">สั่งซื้อคลิก</button></a>
-		<hr>
-	</div>
+	@include('include.front._add_line_btn')
 	<!-- ปุ่มสั่งซื้อ -->
 
 	@if($rs->detail) <p class="sticker-detail animate-box" data-animate-effect="fadeInLeft">{{ $rs->detail }}</p> @endif
