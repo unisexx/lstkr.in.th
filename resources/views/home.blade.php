@@ -1,5 +1,11 @@
 @extends('layouts.front') @section('content')
 
+<div class="fh5co-narrow-content single-item mb-4">
+	<div><a href="https://line2me.in.th/page/view/22" target="_blank"><img class="img-fluid" src="https://line2me.in.th/image/free_promote.png" alt="โปรโมทสติ๊กเกอร์ไลน์"></a></div>
+  	{{-- <div><a href="https://line.me/R/ti/p/HuNn5V9sfP"><img class="img-fluid" src="https://line2me.in.th/image/banner.jpg" alt="linesticker.in.th"></a></div> --}}
+</div>
+
+
 @if(count($sticker_promote) != 0)
 <div class="fh5co-narrow-content">
 	<div class="d-flex justify-content-between align-items-baseline animate-box" data-animate-effect="fadeInLeft">
@@ -312,3 +318,30 @@
 </div>
 
 @endsection
+
+@push('css')
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css">
+<style>
+.slick-prev:before, .slick-next:before{
+	color:#9e9e9e !important;
+}
+.slick-dots li button:before{
+	font-size: 13px;
+}
+</style>
+@endpush
+
+@push('js')
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script>
+$(document).ready(function(){
+	$('.single-item').slick({
+		dots:true,
+		autoplay:true,
+		speed: 1000,
+		autoplaySpeed: 5000,
+	});
+});
+</script>
+@endpush
